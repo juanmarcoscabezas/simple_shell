@@ -1,4 +1,5 @@
 #include "shell.h"
+#define LSH_TOK_DELIM " \t\r\n\a"
 
 /**
  * main.c - function main entry.
@@ -10,14 +11,46 @@
  **/
 int main(int argc, char *argv[], char *envp[])
 {
-	int execution;
-	char *env = {NULL};
-	char *command[] = {"-l", NULL};
+	char auxiliar[100];
+	int pos = 0;
+	char ch;
+	char **tokens = malloc(sizeof(char *) * 64);
+	char *token;
 
-	execution = execve("/bin/ls", command, env);
+	if (argc == 1)
+	{
+		if (isatty(STDIN_FILENO))
+		{
+			printf("Modo interactivo\n");
+			return (1);
+		}
+		else
+		{
+			printf("Leyendo del stdin\n");
+			while(read(STDIN_FILENO, &ch, 1) > 0)
+			{
+				auxiliar[pos] = ch;
+				pos++;
+			}
+			auxiliar[pos] = '\0';
+			printf("%s\n", auxiliar);
 
-	if (execution == -1)
-		perror("Error\n");
-
-	return (0);
+			pos = 0;
+			token = strtok(auxiliar, LSH_TOK_DELIM);
+			while(token)
+			{
+				tokens[pos] = token;
+				pos++;
+				token = strtok(NULL, LSH_TOK_DELIM);
+			}
+			tokens[pos] = NULL;
+			execute_commands(tokens, envp);
+			return (2);
+		}
+	}
+	else
+	{
+		execute_commands(++argv, envp);
+		return (0);
+	}
 }
