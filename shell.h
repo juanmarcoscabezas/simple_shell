@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 /**
  * print_prompt - Prints a prompt
  * Description: This function prints a prompt

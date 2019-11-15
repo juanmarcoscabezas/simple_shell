@@ -10,6 +10,14 @@
  **/
 int main(int argc, char *argv[], char *envp[])
 {
-	print_prompt();
+	int execution;
+	char *env = {NULL};
+	char *command[] = {"-l", NULL};
+
+	execution = execve("/bin/ls", command, env);
+
+	if (execution == -1)
+		perror("Error\n");
+
 	return (0);
 }
