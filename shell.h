@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 #include <string.h>
 
+void get_stdin(char *envp[]);
 /**
  * print_prompt - Prints a prompt
  * Description: This function prints a prompt

@@ -2,14 +2,14 @@
 #define LSH_TOK_DELIM " \t\r\n\a"
 
 /**
- * main.c - function main entry.
- * Description: main function for our shell
+ * get_stdin.c - function to get stdin.
+ * Description: main 
  * @argc: number of arguments pass to the shell
  * @argv: char ** pass to the shell
  * @envp: enviroment pass to the shell
  * Return: 0 on success
  **/
-int main(int argc, char *argv[], char *envp[])
+void get_stdin(char *envp[])
 {
 	char auxiliar[100];
 	int pos = 0;
@@ -17,40 +17,23 @@ int main(int argc, char *argv[], char *envp[])
 	char **tokens = malloc(sizeof(char *) * 64);
 	char *token;
 
-	if (argc == 1)
+	printf("Leyendo del stdin\n");
+	while(read(STDIN_FILENO, &ch, 1) > 0)
 	{
-		if (isatty(STDIN_FILENO))
-		{
-			printf("Modo interactivo\n");
-			return (1);
-		}
-		else
-		{
-			printf("Leyendo del stdin\n");
-			while(read(STDIN_FILENO, &ch, 1) > 0)
-			{
-				auxiliar[pos] = ch;
-				pos++;
-			}
-			auxiliar[pos] = '\0';
-			printf("%s\n", auxiliar);
+		auxiliar[pos] = ch;
+		pos++;
+	}
+	auxiliar[pos] = '\0';
+	printf("%s\n", auxiliar);
 
-			pos = 0;
-			token = strtok(auxiliar, LSH_TOK_DELIM);
-			while(token)
-			{
-				tokens[pos] = token;
-				pos++;
-				token = strtok(NULL, LSH_TOK_DELIM);
-			}
-			tokens[pos] = NULL;
-			execute_commands(tokens, envp);
-			return (2);
-		}
-	}
-	else
+	pos = 0;
+	token = strtok(auxiliar, LSH_TOK_DELIM);
+	while(token)
 	{
-		execute_commands(++argv, envp);
-		return (0);
+		tokens[pos] = token;
+		pos++;
+		token = strtok(NULL, LSH_TOK_DELIM);
 	}
+	tokens[pos] = NULL;
+	execute_commands(tokens, envp);
 }
