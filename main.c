@@ -27,25 +27,7 @@ int main(int argc, char *argv[], char *envp[])
 		}
 		else
 		{
-			printf("Leyendo del stdin\n");
-			while(read(STDIN_FILENO, &ch, 1) > 0)
-			{
-				auxiliar[pos] = ch;
-				pos++;
-			}
-			auxiliar[pos] = '\0';
-			printf("%s\n", auxiliar);
-
-			pos = 0;
-			token = strtok(auxiliar, LSH_TOK_DELIM);
-			while(token)
-			{
-				tokens[pos] = token;
-				pos++;
-				token = strtok(NULL, LSH_TOK_DELIM);
-			}
-			tokens[pos] = NULL;
-			execute_commands(tokens, envp);
+			get_stdin(envp);
 			return (2);
 		}
 	}
