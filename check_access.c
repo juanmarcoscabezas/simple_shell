@@ -50,11 +50,11 @@ char *check_access(char *path, char *command)
 		if (status == 0)
 		{
 			printf("ADENTRO: %s", cat_command);
-			return (cat_command);
+			return (command);
 		}
 
 		free(cat_command);
 		single_path = strtok(NULL, ":\n");
 	}
-	return (NULL);
+	return (command);
 }
