@@ -17,14 +17,12 @@ void get_stdin(char *envp[])
 	char **tokens = malloc(sizeof(char *) * 64);
 	char *token;
 
-	printf("Leyendo del stdin\n");
 	while(read(STDIN_FILENO, &ch, 1) > 0)
 	{
 		auxiliar[pos] = ch;
 		pos++;
 	}
 	auxiliar[pos] = '\0';
-	printf("%s\n", auxiliar);
 
 	pos = 0;
 	token = strtok(auxiliar, LSH_TOK_DELIM);
