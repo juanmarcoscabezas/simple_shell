@@ -21,7 +21,8 @@ int main(int argc, char *argv[], char *envp[])
 	{
 		if (isatty(STDIN_FILENO))
 		{
-			printf("Modo interactivo\n");
+			print_prompt();
+			
 			return (1);
 		}
 		else

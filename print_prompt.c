@@ -8,5 +8,8 @@
  */
 void print_prompt(void)
 {
-	printf("($) ");	
+	char c;
+
+	printf("($) ");
+	c = getchar();
 }
