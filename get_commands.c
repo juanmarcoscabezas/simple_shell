@@ -6,7 +6,21 @@
  * @void
  * Return: Always 0
  */
-int get_commands(void)
+int get_commands(char *buffer)
 {
+	char *token;
+	char **tokens = malloc(sizeof(char *) * 64);
+	int pos = 0;
+
+	token = strtok(buffer, " \n");
+
+	while (token)
+	{
+		tokens[pos] = token;
+		pos++;
+		token = strtok(NULL, " \n");
+	}
+	tokens[pos] = NULL;
+	execute_commands(tokens, NULL);
 	return (0);
 }

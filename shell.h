@@ -7,15 +7,20 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <signal.h>
 
 void get_stdin(char *envp[]);
+int read_file(int argc, char *argv[]);
+int get_commands(char *buffer);
 /**
- * print_prompt - Prints a prompt
+ * interactive_mode - Prints a prompt
  * Description: This function prints a prompt
  * @void:
  * Return:
  */
-void print_prompt(void);
+void interactive_mode(void);
 
 /**
  * execute_commands -  Execute commands

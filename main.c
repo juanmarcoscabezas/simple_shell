@@ -1,5 +1,4 @@
 #include "shell.h"
-#define LSH_TOK_DELIM " \t\r\n\a"
 
 /**
  * main.c - function main entry.
@@ -11,29 +10,22 @@
  **/
 int main(int argc, char *argv[], char *envp[])
 {
-	char auxiliar[100];
-	int pos = 0;
-	char ch;
-	char **tokens = malloc(sizeof(char *) * 64);
-	char *token;
-
 	if (argc == 1)
 	{
 		if (isatty(STDIN_FILENO))
 		{
-			print_prompt();
-			
-			return (1);
+			interactive_mode();
+			return (0);
 		}
 		else
 		{
 			get_stdin(envp);
-			return (2);
+			return (1);
 		}
 	}
 	else
 	{
-		execute_commands(++argv, envp);
-		return (0);
+		read_file(--argc, ++argv);
+		return (2);
 	}
 }
