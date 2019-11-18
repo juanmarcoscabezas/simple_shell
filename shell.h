@@ -11,16 +11,24 @@
 #include <unistd.h>
 #include <signal.h>
 
+typedef struct comands
+{
+	char *bin;
+	char *options;
+	char *op;
+} comands_t;
+
 void get_stdin(char *envp[]);
 int read_file(int argc, char *argv[]);
-int get_commands(char *buffer);
+int get_commands(char *buffer, char *envp[]);
+char *_getenv(char *envp[]);
 /**
  * interactive_mode - Prints a prompt
  * Description: This function prints a prompt
  * @void:
  * Return:
  */
-void interactive_mode(void);
+void interactive_mode(char *envp[]);
 
 /**
  * execute_commands -  Execute commands

@@ -6,7 +6,7 @@
  * @void:
  * Return:
  */
-void interactive_mode(void)
+void interactive_mode(char *envp[])
 {
 	char *buffer;
 	size_t bufsize = 32;
@@ -24,6 +24,6 @@ void interactive_mode(void)
 	
 		printf("($) ");			
 		characters = getline(&buffer, &bufsize, stdin);
-		get_commands(buffer);
+		get_commands(buffer, envp);
 	}
 }

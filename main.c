@@ -14,7 +14,7 @@ int main(int argc, char *argv[], char *envp[])
 	{
 		if (isatty(STDIN_FILENO))
 		{
-			interactive_mode();
+			interactive_mode(envp);
 			return (0);
 		}
 		else

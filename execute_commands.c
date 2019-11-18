@@ -1,4 +1,12 @@
 #include "shell.h"
+void str_replace(char *dest, char *src)
+{
+	int i;
+
+	for (i = 0; src[i] != '\0'; i++)
+		dest[i] = src[i];
+	dest[i] = '\0';
+}
 
 /**
  * execute_commands -  Execute commands
@@ -16,10 +24,11 @@ int execute_commands(char *argv[], char *envp[])
 
 	/* Check if the file exists */
 	is_accessible = access(argv[0], F_OK);
+	/* If not accessible try to find in PATH */
 	if (is_accessible == -1)
 	{
-		path = getenv("PATH");
-		
+		path = _getenv(envp);
+		str_replace(argv[0], check_access(path, argv[0]));
 	}
 
 	pid = fork();

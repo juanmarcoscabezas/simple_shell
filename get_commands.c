@@ -6,7 +6,7 @@
  * @void
  * Return: Always 0
  */
-int get_commands(char *buffer)
+int get_commands(char *buffer, char *envp[])
 {
 	char *token;
 	char **tokens = malloc(sizeof(char *) * 64);
@@ -21,6 +21,6 @@ int get_commands(char *buffer)
 		token = strtok(NULL, " \n");
 	}
 	tokens[pos] = NULL;
-	execute_commands(tokens, NULL);
+	execute_commands(tokens, envp);
 	return (0);
 }
