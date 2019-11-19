@@ -28,7 +28,9 @@ int execute_commands(char *argv[], char *envp[])
 	if (is_accessible == -1)
 	{
 		path = _getenv(envp);
-		str_replace(argv[0], check_access(path, argv[0]));
+		argv[0] = check_access(path, argv[0]);
+		printf("ARGV[0] = %s\n", check_access(path, argv[0]));
+		/* str_replace(argv[0], check_access(path, argv[0]));*/
 	}
 
 	pid = fork();
@@ -38,7 +40,7 @@ int execute_commands(char *argv[], char *envp[])
 
 		if (execution == -1)
 		{
-			perror("Error\n");
+			perror("Error execution\n");
 		}
 	}
 	else if (pid == -1)

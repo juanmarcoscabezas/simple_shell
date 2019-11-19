@@ -37,6 +37,7 @@ char *check_access(char *path, char *command)
 	char *cat_command;
 	int status;
 
+	printf("EL PATH %s\n", path);
 	single_path = strtok(path, ":\n");
 
 	while (single_path)

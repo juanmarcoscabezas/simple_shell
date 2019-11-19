@@ -15,7 +15,7 @@ int _getpath(char *path)
 
 char *_getenv(char *envp[])
 {
-	char *path;
+	char *envp_aux, *path;
 	int counter;
 
 	path = NULL;
@@ -24,10 +24,13 @@ char *_getenv(char *envp[])
 	{
 		if (_getpath(envp[counter]) == 0)
 		{
-			path = strtok(envp[counter], "=\n");
+			envp_aux = malloc(sizeof(char) * _strlen());
+			envp_aux = _strcpy(envp_aux, envp[counter]);
+			path = strtok(envp_aux, "=");
 			break;
 		}
 	}
-	path = strtok(NULL, "\n");
+	path = strtok(NULL, "");
+	free(envp_aux);
 	return (path);
 }
