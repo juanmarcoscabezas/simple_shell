@@ -1,4 +1,13 @@
 #include "shell.h"
+
+/**
+ * _strlen_two_strings - len of two strings.
+ * @s1: frist char *
+ * @s2: second char *
+ * Description: Calculate the len of a string
+ * include +1 for an extra '/' and +1 for '\0'
+ * Return: len of the two strings
+ */
 int _strlen_two_strings(char *s1, char *s2)
 {
 	int len, i;
@@ -30,17 +39,24 @@ char *_strcat(char *dest, char *src)
 	return (dest);
 }
 
-/* Check if the command exist in one of the $PATH */
+/**
+ * check_access - check if have access to the bin.
+ * @path: get the PATH of the enviroment
+ * @command: the name of the command
+ * Description: Check if the command exist in one of the $PATH
+ * Return: char*
+ */
 char *check_access(char *path, char *command)
 {
 	char *single_path;
 	char *cat_command;
-	int status;
+	int status, len_two;
 
 	single_path = strtok(path, ":\n");
 	while (single_path)
 	{
-		cat_command = malloc(sizeof(char) * _strlen_two_strings(single_path, command));
+		len_two = _strlen_two_strings(single_path, command);
+		cat_command = malloc(sizeof(char) * len_two);
 		cat_command = _strcat(cat_command, single_path);
 		cat_command = _strcat(cat_command, "/");
 		cat_command = _strcat(cat_command, command);
