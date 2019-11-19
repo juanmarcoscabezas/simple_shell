@@ -13,12 +13,12 @@ This project was built by Alejandro LÃ³pez and Juan Marcos Cabezas
 4. [General Test Cases](#general-Test-Cases)
 
 # Authors
- í±¤ **Hugo Bayona**
+ ðŸ‘¤ **Hugo Bayona**
 
 - Twitter: [@batmanesfriki](https://twitter.com/batmanesfriki)
 - Github: [@hb4y](https://github.com/hb4y)
 
-í±¤ **Juan Marcos Cabezas**
+ðŸ‘¤ **Juan Marcos Cabezas**
 
 - Twitter: [@juanmarcab](https://twitter.com/juanmarcab)
 - Github: [@juanmarcoscabezas](https://github.com/juanmarcoscabezas)
