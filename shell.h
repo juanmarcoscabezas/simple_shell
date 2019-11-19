@@ -21,7 +21,7 @@ typedef struct comands
 
 void get_stdin(char *envp[]);
 int read_file(int argc, char *argv[]);
-int get_commands(char *buffer, char *envp[]);
+int get_commands(char *buffer, char *envp[], int *number_commands);
 char *_getenv(char *envp[]);
 char *check_access(char *path, char *command);
 int _strlen(char *s);
@@ -32,7 +32,7 @@ char *_strcpy(char *dest, char *src);
  * @void:
  * Return:
  */
-void interactive_mode(char *envp[]);
+void interactive_mode(char *envp[], int *number_commands);
 
 /**
  * execute_commands -  Execute commands
@@ -41,6 +41,6 @@ void interactive_mode(char *envp[]);
  * @envp: Enviroment params
  * Return: 1
  */
-int execute_commands(char *argv[], char *envp[]);
+int execute_commands(char *argv[], char *envp[], int *number_commands); 
 
 #endif

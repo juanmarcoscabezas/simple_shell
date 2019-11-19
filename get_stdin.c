@@ -33,5 +33,5 @@ void get_stdin(char *envp[])
 		token = strtok(NULL, LSH_TOK_DELIM);
 	}
 	tokens[pos] = NULL;
-	execute_commands(tokens, envp);
+	execute_commands(tokens, envp, NULL);
 }

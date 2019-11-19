@@ -10,11 +10,13 @@
  **/
 int main(int argc, char *argv[], char *envp[])
 {
+	int number_commands = 1;
+
 	if (argc == 1)
 	{
 		if (isatty(STDIN_FILENO))
 		{
-			interactive_mode(envp);
+			interactive_mode(envp, &number_commands);
 			return (0);
 		}
 		else

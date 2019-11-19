@@ -6,7 +6,7 @@
  * @void:
  * Return:
  */
-void interactive_mode(char *envp[])
+void interactive_mode(char *envp[], int *number_commands)
 {
 	char *buffer;
 	size_t bufsize = 32;
@@ -25,6 +25,8 @@ void interactive_mode(char *envp[])
 		printf("($) ");			
 		getline_len = getline(&buffer, &bufsize, stdin);
 		if (getline_len > 1)
-			get_commands(buffer, envp);
+			get_commands(buffer, envp, number_commands);
+		else
+			(*number_commands)++;
 	}
 }
