@@ -19,7 +19,7 @@ typedef struct comands
 	char *op;
 } comands_t;
 
-void get_stdin(char *envp[]);
+void get_stdin(char *envp[], int *number_commands);
 int read_file(int argc, char *argv[]);
 int get_commands(char *buffer, char *envp[], int *number_commands);
 char *_getenv(char *envp[]);

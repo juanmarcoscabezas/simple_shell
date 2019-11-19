@@ -21,7 +21,7 @@ int main(int argc, char *argv[], char *envp[])
 		}
 		else
 		{
-			get_stdin(envp);
+			get_stdin(envp, &number_commands);
 			return (1);
 		}
 	}
