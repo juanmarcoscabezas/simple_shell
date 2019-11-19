@@ -9,7 +9,7 @@
  * @envp: enviroment pass to the shell
  * Return: 0 on success
  **/
-void get_stdin(char *envp[], int *number_commands)
+void get_stdin(char *cp_argv[], char *envp[], int *number_commands)
 {
 	char auxiliar[100];
 	int pos = 0;
@@ -33,5 +33,5 @@ void get_stdin(char *envp[], int *number_commands)
 		token = strtok(NULL, LSH_TOK_DELIM);
 	}
 	tokens[pos] = NULL;
-	execute_commands(tokens, envp, number_commands);
+	execute_commands(cp_argv, tokens, envp, number_commands);
 }

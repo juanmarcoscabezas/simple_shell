@@ -16,12 +16,12 @@ int main(int argc, char *argv[], char *envp[])
 	{
 		if (isatty(STDIN_FILENO))
 		{
-			interactive_mode(envp, &number_commands);
+			interactive_mode(argv, envp, &number_commands);
 			return (0);
 		}
 		else
 		{
-			get_stdin(envp, &number_commands);
+			get_stdin(argv, envp, &number_commands);
 			return (1);
 		}
 	}

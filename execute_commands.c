@@ -23,7 +23,7 @@ void str_replace(char *dest, char *src)
  * @number_commands: the number of commands given until this
  * Return: 1
  */
-int execute_commands(char *argv[], char *envp[], int *number_commands)
+int execute_commands(char *cp_argv[], char *argv[], char *envp[], int *number_commands)
 {
 	int execution, status, is_accessible, tmp;
 	pid_t pid;
@@ -40,7 +40,7 @@ int execute_commands(char *argv[], char *envp[], int *number_commands)
 		if (argv[0] == NULL)
 		{
 			tmp = *number_commands;
-			dprintf(STDERR_FILENO, "./hsh: %d: %s: not found\n", tmp, command_cpy);
+			dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", cp_argv[0], tmp, command_cpy);
 			(*number_commands)++;
 			return (-1);
 		}
