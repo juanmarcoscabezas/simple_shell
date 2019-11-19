@@ -24,13 +24,12 @@ char *_getenv(char *envp[])
 	{
 		if (_getpath(envp[counter]) == 0)
 		{
-			envp_aux = malloc(sizeof(char) * _strlen());
+			envp_aux = malloc(sizeof(char) * _strlen(envp[counter]));
 			envp_aux = _strcpy(envp_aux, envp[counter]);
 			path = strtok(envp_aux, "=");
 			break;
 		}
 	}
 	path = strtok(NULL, "");
-	free(envp_aux);
 	return (path);
 }

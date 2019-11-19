@@ -37,7 +37,7 @@ int execute_commands(char *argv[], char *envp[])
 	if (pid == 0)
 	{
 		execution = execve(argv[0], argv, envp);
-
+		free(path);
 		if (execution == -1)
 		{
 			perror("Error execution\n");

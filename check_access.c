@@ -1,5 +1,5 @@
 #include "shell.h"
-int _strlen(char *s1, char *s2)
+int _strlen_two_strings(char *s1, char *s2)
 {
 	int len, i;
 
@@ -38,18 +38,15 @@ char *check_access(char *path, char *command)
 	int status;
 
 	single_path = strtok(path, ":\n");
-
 	while (single_path)
 	{
-		cat_command = malloc(sizeof(char) * _strlen(single_path, command));
+		cat_command = malloc(sizeof(char) * _strlen_two_strings(single_path, command));
 		cat_command = _strcat(cat_command, single_path);
 		cat_command = _strcat(cat_command, "/");
 		cat_command = _strcat(cat_command, command);
 		status = access(cat_command, F_OK);
-		
 		if (status == 0)
 		{
-			printf("ENCUENTRA EL COMANDO EN PATH\n");
 			return (cat_command);
 		}
 
