@@ -22,6 +22,8 @@ void get_stdin(char *envp[]);
 int read_file(int argc, char *argv[]);
 int get_commands(char *buffer, char *envp[]);
 char *_getenv(char *envp[]);
+int _strlen(char *s);
+char *_strcpy(char *dest, char *src);
 /**
  * interactive_mode - Prints a prompt
  * Description: This function prints a prompt
