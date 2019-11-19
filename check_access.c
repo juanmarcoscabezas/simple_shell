@@ -53,5 +53,5 @@ char *check_access(char *path, char *command)
 		free(cat_command);
 		single_path = strtok(NULL, ":\n");
 	}
-	return (command);
+	return (NULL);
 }

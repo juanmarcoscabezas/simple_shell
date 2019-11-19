@@ -10,7 +10,7 @@ void interactive_mode(char *envp[])
 {
 	char *buffer;
 	size_t bufsize = 32;
-	size_t characters;
+	size_t getline_len;
 
 	buffer = (char *) malloc(bufsize * sizeof(char));
 	if (!buffer)
@@ -23,7 +23,8 @@ void interactive_mode(char *envp[])
 	{
 	
 		printf("($) ");			
-		characters = getline(&buffer, &bufsize, stdin);
-		get_commands(buffer, envp);
+		getline_len = getline(&buffer, &bufsize, stdin);
+		if (getline_len > 1)
+			get_commands(buffer, envp);
 	}
 }

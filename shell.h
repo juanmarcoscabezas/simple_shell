@@ -10,6 +10,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <signal.h>
+#include <errno.h>
 
 typedef struct comands
 {

@@ -27,9 +27,8 @@ char *_getenv(char *envp[])
 			envp_aux = malloc(sizeof(char) * _strlen(envp[counter]));
 			envp_aux = _strcpy(envp_aux, envp[counter]);
 			path = strtok(envp_aux, "=");
-			break;
+			path = strtok(NULL, "");
 		}
 	}
-	path = strtok(NULL, "");
 	return (path);
 }

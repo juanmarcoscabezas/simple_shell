@@ -14,6 +14,8 @@ int read_file(int argc, char *argv[])
 	char *filename = argv[1];
 	int letters = 10;
 
+	argc--;
+
 	if (filename == NULL)
 		return (0);
 
