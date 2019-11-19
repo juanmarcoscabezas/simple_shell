@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * str_replace - replace a str with a second content
+ * @dest: Destination str
+ * @src: Source str
+ * Return: void
+ */
 void str_replace(char *dest, char *src)
 {
 	int i;
@@ -14,14 +20,14 @@ void str_replace(char *dest, char *src)
  * Description: Function that execute commands
  * @argv: Params
  * @envp: Enviroment params
+ * @number_commands: the number of commands given until this
  * Return: 1
  */
 int execute_commands(char *argv[], char *envp[], int *number_commands)
 {
-	int execution, status, is_accessible;
+	int execution, status, is_accessible, tmp;
 	pid_t pid;
-	char *path;
-	char *command_cpy;
+	char *path, *command_cpy;
 
 	/* Check if the file exists */
 	is_accessible = access(argv[0], F_OK);
@@ -33,21 +39,19 @@ int execute_commands(char *argv[], char *envp[], int *number_commands)
 		argv[0] = check_access(path, argv[0]);
 		if (argv[0] == NULL)
 		{
-			dprintf(STDERR_FILENO, "hsh: %d: %s: not found\n", *number_commands, command_cpy);
+			tmp = *number_commands;
+			dprintf(STDERR_FILENO, "hsh: %d: %s: not found\n", tmp, command_cpy);
 			(*number_commands)++;
 			return (-1);
 		}
 	}
-
 	(*number_commands)++;
 	pid = fork();
 	if (pid == 0)
 	{
 		execution = execve(argv[0], argv, envp);
 		if (execution == -1)
-		{
 			perror("Error execution\n");
-		}
 	}
 	else if (pid == -1)
 	{
@@ -55,9 +59,7 @@ int execute_commands(char *argv[], char *envp[], int *number_commands)
 		return (-1);
 	}
 	else
-	{
 		wait(&status);
-	}
 
 	return (0);
 }
