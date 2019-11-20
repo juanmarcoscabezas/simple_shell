@@ -55,6 +55,9 @@ char *check_access(char *path, char *command)
 	{
 		len_two = _strlen_two_strings(single_path, command);
 		cat_command = malloc(sizeof(char) * len_two);
+		if (cat_command == NULL)
+			return (NULL);
+		cat_command[0] = '\0';
 		_strcat(cat_command, single_path);
 		_strcat(cat_command, "/");
 		_strcat(cat_command, command);
