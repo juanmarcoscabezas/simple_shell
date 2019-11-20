@@ -20,11 +20,11 @@ void process_command(char *cp_argv[], char *envp[], int *number_commands, char *
 }
 
 /**
- * get_stdin.c - function to get stdin.
- * Description: main 
- * @argc: number of arguments pass to the shell
- * @argv: char ** pass to the shell
+ * get_stdin - function to get stdin.
+ * Description: main
+ * @cp_argv: Copy of the original argv (the name of the executable)
  * @envp: enviroment pass to the shell
+ * @number_commands: the number of commands given until this point.
  * Return: 0 on success
  **/
 void get_stdin(char *cp_argv[], char *envp[], int *number_commands)
@@ -33,7 +33,7 @@ void get_stdin(char *cp_argv[], char *envp[], int *number_commands)
 	int pos = 0;
 	char ch;
 
-	while(read(STDIN_FILENO, &ch, 1) > 0)
+	while (read(STDIN_FILENO, &ch, 1) > 0)
 	{
 		command[pos] = ch;
 		if (ch == '\0' || ch == '\n')

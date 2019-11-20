@@ -18,16 +18,17 @@ void str_replace(char *dest, char *src)
 /**
  * execute_commands -  Execute commands
  * Description: Function that execute commands
+ * @cp_argv: Copy of the original argv (the name of the executable)
  * @argv: Params
  * @envp: Enviroment params
- * @number_commands: the number of commands given until this
+ * @n_com: the number of commands given until this point.
  * Return: 1
  */
-int execute_commands(char *cp_argv[], char *argv[], char *envp[], int *number_commands)
+int execute_commands(char *cp_argv[], char *argv[], char *envp[], int *n_com)
 {
 	int execution, status, is_accessible, tmp;
 	pid_t pid;
-	char *path, *command_cpy;
+	char *path, *com_cpy;
 
 	/* Check if the file exists */
 	is_accessible = access(argv[0], F_OK);
@@ -35,17 +36,17 @@ int execute_commands(char *cp_argv[], char *argv[], char *envp[], int *number_co
 	if (is_accessible == -1)
 	{
 		path = _getenv(envp);
-		command_cpy = argv[0];
+		com_cpy = argv[0];
 		argv[0] = check_access(path, argv[0]);
 		if (argv[0] == NULL)
 		{
-			tmp = *number_commands;
-			dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", cp_argv[0], tmp, command_cpy);
-			(*number_commands)++;
+			tmp = *n_com;
+			dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", cp_argv[0], tmp, com_cpy);
+			(*n_com)++;
 			return (-1);
 		}
 	}
-	(*number_commands)++;
+	(*n_com)++;
 	pid = fork();
 	if (pid == 0)
 	{

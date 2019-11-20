@@ -1,10 +1,15 @@
 #include "shell.h"
 
+/**
+ * _getpath - get only the value of PATH form the env
+ * @path: get the line to evaluate
+ * Return: 0 if the line contains "PATH" - -1 on failure
+ */
 int _getpath(char *path)
 {
 	int counter;
 	char *cmp = "PATH";
-	
+
 	for (counter = 0; cmp[counter] != '\0'; counter++)
 	{
 		if (cmp[counter] != path[counter])
@@ -13,6 +18,11 @@ int _getpath(char *path)
 	return (0);
 }
 
+/**
+ * _getenv - get the entire envp
+ * @envp: char * with the entire envp
+ * Return: the PATH (NULL if not found)
+ */
 char *_getenv(char *envp[])
 {
 	char *envp_aux, *path;
