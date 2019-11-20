@@ -35,4 +35,17 @@ int _strlen(char *s)
 	return (i + 1);
 }
 
+/**
+ * str_replace - replace a str with a second content
+ * @dest: Destination str
+ * @src: Source str
+ * Return: void
+ */
+void str_replace(char *dest, char *src)
+{
+	int i;
 
+	for (i = 0; src[i] != '\0'; i++)
+		dest[i] = src[i];
+	dest[i] = '\0';
+}

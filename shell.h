@@ -26,6 +26,7 @@ char *_getenv(char *envp[]);
 char *check_access(char *path, char *command);
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
+void str_replace(char *dest, char *src);
 /**
  * interactive_mode - Prints a prompt
  * Description: This function prints a prompt
