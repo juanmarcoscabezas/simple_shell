@@ -49,8 +49,9 @@ void get_stdin(char *cp_argv[], char *envp[], int *number_commands)
 		{
 			process_command(cp_argv, envp, number_commands, command);
 			pos = -1;
+			command = malloc(sizeof(char) * 1024);
+			_memset(command, '\0', 1024);		
 		}
 		pos++;
 	}
-	free(command);
 }
