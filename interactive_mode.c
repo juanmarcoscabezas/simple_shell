@@ -13,15 +13,14 @@ void interactive_mode(char *cp_argv[], char *envp[], int *number_commands)
 	size_t bufsize = 32;
 	size_t getline_len;
 
-	buffer = (char *) malloc(bufsize * sizeof(char));
-	if (!buffer)
-	{
-		perror("Error on allocation");
-		exit(100);
-	}
-
 	while (1)
 	{
+		buffer = (char *) malloc(bufsize * sizeof(char));
+		if (!buffer)
+		{
+			perror("Error on allocation");
+			exit(100);
+		}	
 
 		printf("($) ");
 		getline_len = getline(&buffer, &bufsize, stdin);
@@ -29,5 +28,7 @@ void interactive_mode(char *cp_argv[], char *envp[], int *number_commands)
 			get_commands(cp_argv, buffer, envp, number_commands);
 		else
 			(*number_commands)++;
+
+		free(buffer);
 	}
 }

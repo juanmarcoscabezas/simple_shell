@@ -25,7 +25,7 @@ int _strlen_two_strings(char *s1, char *s2)
  * @src: source string
  * Return: char*
  */
-char *_strcat(char *dest, char *src)
+void _strcat(char *dest, char *src)
 {
 	int i, j;
 
@@ -35,8 +35,6 @@ char *_strcat(char *dest, char *src)
 	for (i = 0 ; src[i] != '\0' ; i++)
 		dest[j + i] = src[i];
 	dest[j + i] = '\0';
-
-	return (dest);
 }
 
 /**
@@ -57,9 +55,10 @@ char *check_access(char *path, char *command)
 	{
 		len_two = _strlen_two_strings(single_path, command);
 		cat_command = malloc(sizeof(char) * len_two);
-		cat_command = _strcat(cat_command, single_path);
-		cat_command = _strcat(cat_command, "/");
-		cat_command = _strcat(cat_command, command);
+		_strcat(cat_command, single_path);
+		_strcat(cat_command, "/");
+		_strcat(cat_command, command);
+
 		status = access(cat_command, F_OK);
 		if (status == 0)
 		{

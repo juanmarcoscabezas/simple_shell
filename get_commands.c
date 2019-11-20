@@ -12,9 +12,16 @@
 int get_commands(char *cp_argv[], char *buffer, char *envp[], int *n_commands)
 {
 	char *token;
-	char **tokens = malloc(sizeof(char *) * 64);
+	char **tokens;
 	int pos = 0;
 
+	tokens = malloc(sizeof(char *) * 64);
+
+	if (!tokens)
+	{
+		perror("Error on allocation");
+		exit(100);
+	}
 	token = strtok(buffer, " \n");
 
 	while (token)
@@ -25,5 +32,6 @@ int get_commands(char *cp_argv[], char *buffer, char *envp[], int *n_commands)
 	}
 	tokens[pos] = NULL;
 	execute_commands(cp_argv, tokens, envp, n_commands);
+	free(tokens);
 	return (0);
 }

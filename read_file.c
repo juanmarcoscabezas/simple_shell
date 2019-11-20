@@ -24,10 +24,13 @@ int read_file(int argc, char *argv[])
 	if (file == -1)
 		return (0);
 
-	buffer = malloc(letters);
+	buffer = malloc(sizeof(char) * letters);
 
 	if (buffer == NULL)
+	{
+		close(file);
 		return (0);
+	}
 
 	n = read(file, buffer, letters);
 

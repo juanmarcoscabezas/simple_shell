@@ -43,6 +43,9 @@ int execute_commands(char *cp_argv[], char *argv[], char *envp[], int *n_com)
 			tmp = *n_com;
 			dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", cp_argv[0], tmp, com_cpy);
 			(*n_com)++;
+			free(argv[0]);
+			free(argv);
+			free(path);
 			return (-1);
 		}
 	}
@@ -52,15 +55,19 @@ int execute_commands(char *cp_argv[], char *argv[], char *envp[], int *n_com)
 	{
 		execution = execve(argv[0], argv, envp);
 		if (execution == -1)
-			perror("Error execution\n");
+			perror("Error on execution\n");
 	}
 	else if (pid == -1)
 	{
 		perror("Error on pid\n");
+		free(argv[0]);
+		free(argv);
+		free(path);
 		return (-1);
 	}
 	else
+	{
 		wait(&status);
-
+	}
 	return (0);
 }
