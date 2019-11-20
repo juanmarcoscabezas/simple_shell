@@ -41,7 +41,10 @@ int execute_commands(char *cp_argv[], char *argv[], char *envp[], int *n_com)
 	{
 		execution = execve(argv[0], argv, envp);
 		if (execution == -1)
+		{
 			perror("Error on execution\n");
+			exit(1);
+		}
 		exit(0);
 	}
 	else

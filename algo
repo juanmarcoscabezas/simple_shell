@@ -2,3 +2,4 @@
 echo "echo HOLAAA"
 /bin/ls -l
 ks
+/bin/ls
