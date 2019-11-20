@@ -1,11 +1,12 @@
 #include "shell.h"
 
 /**
- * interactive_mode - Prints a prompt
- * Description: This function prints a prompt
- * @void:
- * Return:
- */
+ * interactive_mode - function in charge of shell interactive mode.
+ * @cp_argv: Copy of the original argv (the name of the executable)
+ * @envp: enviroment pass to the shell
+ * @number_commands: the number of commands given until this point.
+ * Return: void
+ **/
 void interactive_mode(char *cp_argv[], char *envp[], int *number_commands)
 {
 	char *buffer;
@@ -21,8 +22,8 @@ void interactive_mode(char *cp_argv[], char *envp[], int *number_commands)
 
 	while (1)
 	{
-	
-		printf("($) ");			
+
+		printf("($) ");
 		getline_len = getline(&buffer, &bufsize, stdin);
 		if (getline_len > 1)
 			get_commands(cp_argv, buffer, envp, number_commands);
