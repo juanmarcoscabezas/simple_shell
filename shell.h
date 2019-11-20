@@ -20,7 +20,7 @@ typedef struct comands
 } comands_t;
 
 void get_stdin(char *cp_argv[], char *envp[], int *number_commands);
-int read_file(int argc, char *argv[]);
+int read_file(char *argv[]);
 int get_commands(char *cp_argv[], char *buffer, char *envp[], int *number_commands);
 char *_getenv(char *envp[]);
 char *check_access(char *path, char *command);

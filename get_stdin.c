@@ -1,7 +1,16 @@
 #include "shell.h"
 #define LSH_TOK_DELIM " \t\r\n\a"
 
-void process_command(char *cp_argv[], char *envp[], int *number_commands, char *command)
+/**
+ * process_command - Process every command
+ * Description: THis function proccesses all the commands and execute it
+ * @cp_argv: Copy of the original argv
+ * @envp: Enviroment variable
+ * @n_cmds: Number of commands executed
+ * @command: Command to proccess
+ * Return:
+ */
+void process_command(char *cp_argv[], char *envp[], int *n_cmds, char *command)
 {
 	char *token;
 	char **tokens = malloc(sizeof(char *) * 64);
@@ -15,7 +24,7 @@ void process_command(char *cp_argv[], char *envp[], int *number_commands, char *
 		token = strtok(NULL, LSH_TOK_DELIM);
 	}
 	tokens[pos] = NULL;
-	execute_commands(cp_argv, tokens, envp, number_commands);
+	execute_commands(cp_argv, tokens, envp, n_cmds);
 	free(tokens);
 }
 

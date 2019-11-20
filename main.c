@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * main.c - function main entry.
+ * main - function main entry.
  * Description: main function for our shell
  * @argc: number of arguments pass to the shell
  * @argv: char ** pass to the shell
@@ -27,7 +27,7 @@ int main(int argc, char *argv[], char *envp[])
 	}
 	else
 	{
-		read_file(--argc, ++argv);
+		read_file(++argv);
 		return (2);
 	}
 }

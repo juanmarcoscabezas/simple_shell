@@ -20,7 +20,7 @@ void interactive_mode(char *cp_argv[], char *envp[], int *number_commands)
 		{
 			perror("Error on allocation");
 			exit(100);
-		}	
+		}
 
 		printf("($) ");
 		getline_len = getline(&buffer, &bufsize, stdin);

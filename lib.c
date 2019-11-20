@@ -1,10 +1,11 @@
+#include "shell.h"
+
 /**
  * _strcpy - copy an array.
  * @dest: destiny
  * @src: source
  * Return: void.
  */
-
 char *_strcpy(char *dest, char *src)
 {
 	int i, n;
@@ -18,12 +19,12 @@ char *_strcpy(char *dest, char *src)
 	for (i = 0; src[i] != '\0'; i++)
 		dest[i] = src[i];
 	dest[i++] = '\0';
-	return (dest);}
+	return (dest);
+}
 
 /**
  * _strlen - len of char *
- * @dest: destiny
- * @src: source
+ * @s: String to know the length
  * Return: return 1 more to count the null byte.
  */
 int _strlen(char *s)
