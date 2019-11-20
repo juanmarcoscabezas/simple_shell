@@ -28,6 +28,8 @@ int execute_commands(char *cp_argv[], char *argv[], char *envp[], int *n_com)
 			tmp = *n_com;
 			dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", cp_argv[0], tmp, com_cpy);
 			(*n_com)++;
+			if (path)
+				free(path);
 			return (-1);
 		}
 	}

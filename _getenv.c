@@ -33,12 +33,17 @@ char *_getenv(char *envp[])
 		if (_getpath(envp[counter]) == 0)
 		{
 			envp_aux = malloc(sizeof(char) * _strlen(envp[counter]));
+			if (!envp_aux)
+				return (NULL);
 			envp_aux = _strcpy(envp_aux, envp[counter]);
 			path = strtok(envp_aux, "=");
 			path = strtok(NULL, "");
 			path_return = malloc(_strlen(path));
 			if (!path_return)
+			{
+				free(envp_aux);
 				return (NULL);
+			}
 			str_replace(path_return, path);
 			free(envp_aux);
 			break;
