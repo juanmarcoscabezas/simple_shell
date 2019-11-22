@@ -23,4 +23,7 @@ void str_replace(char *dest, char *src);
 void interactive_mode(char *cp_argv[], char *envp[], int *number_commands);
 int execute_commands(char *cp_argv[], char *argv[], char *envp[], int *n_com);
 void _memset(char *s, char b, unsigned int n);
+int built_in(char *cp_argv[], char *argv[], int *n_com);
+int _strcmp(char *string1, char *string2);
+int _atoi(char *s);
 #endif

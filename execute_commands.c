@@ -11,10 +11,12 @@
  */
 int execute_commands(char *cp_argv[], char *argv[], char *envp[], int *n_com)
 {
-	int execution, status, is_accessible, tmp;
+	int status, is_accessible, tmp;
 	pid_t pid;
 	char *path, *com_cpy;
 
+	if (built_in(cp_argv, argv, n_com) == -1)
+		return (-1);
 	/* Check if the file exists */
 	is_accessible = access(argv[0], F_OK);
 	/* If not accessible try to find in PATH */
@@ -39,12 +41,7 @@ int execute_commands(char *cp_argv[], char *argv[], char *envp[], int *n_com)
 	pid = fork();
 	if (pid == 0)
 	{
-		execution = execve(argv[0], argv, envp);
-		if (execution == -1)
-		{
-			perror("Error on execution\n");
-			exit(1);
-		}
+		execve(argv[0], argv, envp);
 		exit(0);
 	}
 	else
