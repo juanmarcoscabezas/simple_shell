@@ -54,8 +54,8 @@ void str_replace(char *dest, char *src)
 /**
  * _strcmp - Compare strings
  * Description: This function compare two strings
- * @s1: First string to compare
- * @s2: Second string to compare
+ * @string1: First string to compare
+ * @string2: Second string to compare
  * Return: @n bytes of @src
  */
 int _strcmp(char *string1, char *string2)

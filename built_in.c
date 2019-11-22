@@ -1,10 +1,12 @@
 #include "shell.h"
 
 /**
- * _atoi - String to int
- * Description: This function convert from string to int
- * @s: Pointer that contains the numbers
- * Return: string to int
+ * check_value - Look for the flag of exit
+ * Description: This function checks the flag of exit
+ * @cp_argv: Copy of passed arguments to main
+ * @number: Number to check if is an integer
+ * @num_com: Number of commands executed
+ * Return: 0 if success, -1 otherwise
  */
 int check_value(char *cp_argv[], char *number, int *num_com)
 {
@@ -25,8 +27,10 @@ int check_value(char *cp_argv[], char *number, int *num_com)
 /**
  * built_in - Built-ins
  * Description: This function is to check the built-ins
- * @argv: Parameter to check built-in
- * Return:
+ * @cp_argv: Copy of passed arguments to main
+ * @argv: Parameter to check if it's a built-in
+ * @n_com: Number of commands executed
+ * Return: the flag passed to exit, -1 otherwise
  */
 int built_in(char *cp_argv[], char *argv[], int *n_com)
 {
