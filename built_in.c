@@ -8,7 +8,7 @@
  * @n_com: Number of commands executed
  * Return: 0 if success, -1 otherwise
  */
-int check_exit(char *cp_argv[], char *number, int *n_com)
+int check_exit(char *argv[], char *number, int *n_com)
 {
 	int counter = 0;
 
@@ -16,7 +16,7 @@ int check_exit(char *cp_argv[], char *number, int *n_com)
 	{
 		if (number[counter] < 48 || number[counter] > 57)
 		{
-			printf("%s: %d: exit: Illegal number: %s\n", cp_argv[0], *n_com, number);
+			printf("%s: %d: exit: Illegal number: %s\n", argv[0], *n_com, number);
 			return (127);
 		}
 		counter++;
@@ -33,30 +33,31 @@ int check_exit(char *cp_argv[], char *number, int *n_com)
  * @n_com: Number of commands executed
  * Return: the flag passed to exit, -1 otherwise
  */
-int built_in(char *cp_argv[], char *argv[], char *envp[], int *n_com)
+int built_in(char *argv[], char *tokens[], char *envp[], int *n_com)
 {
 	int counter = 0, chdir_exec;
+	char *home;
 
-	if (argv != NULL)
+	if (tokens != NULL)
 	{
-		if (argv[0])
+		if (tokens[0])
 		{
-			if (_strcmp(argv[0], "exit") == 0)
+			if (_strcmp(tokens[0], "exit") == 0)
 			{
-				if (argv[1])
+				if (tokens[1])
 				{
-					if (check_exit(cp_argv, argv[1], n_com) == 0)
-						exit(_atoi(argv[1]));
+					if (check_exit(argv, tokens[1], n_com) == 0)
+						exit(_atoi(tokens[1]));
 					(*n_com)++;
 					return (127);
 				}
 				exit(0);
 			}
-			if (_strcmp(argv[0], "env") == 0)
+			if (_strcmp(tokens[0], "env") == 0)
 			{
-				if (argv[1])
+				if (tokens[1])
 				{
-					printf("env: %s: No such file or directory\n", argv[1]);
+					printf("env: %s: No such file or directory\n", tokens[1]);
 					(*n_com)++;
 					return (127);
 				}
@@ -68,21 +69,24 @@ int built_in(char *cp_argv[], char *argv[], char *envp[], int *n_com)
 				(*n_com)++;
 				return (0);
 			}
-			if (_strcmp(argv[0], "cd") == 0)
+			if (_strcmp(tokens[0], "cd") == 0)
 			{
-				if (argv[1])
+				if (tokens[1])
 				{
-					chdir_exec = chdir(argv[1]);
+					chdir_exec = chdir(tokens[1]);
 					if (chdir_exec != 0)
 					{
-						printf("%s: %d: cd: can't cd to %s\n", cp_argv[0], *n_com, argv[1]);
+						printf("%s: %d: cd: can't cd to %s\n", argv[0], *n_com, tokens[1]);
 						(*n_com)++;
 						return (2);
 					}
+					(*n_com)++;
 					return (0);
 				}
 				(*n_com)++;
-				chdir("$HOME");
+				home = _getenv(envp, "HOME");
+				chdir(home);
+				free(home);
 				return (0);
 			}
 		}

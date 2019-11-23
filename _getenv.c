@@ -5,14 +5,13 @@
  * @path: get the line to evaluate
  * Return: 0 if the line contains "PATH" - -1 on failure
  */
-int _getpath(char *path)
+int _getpath(char *path, char *request_path)
 {
 	int counter;
-	char *cmp = "PATH";
 
-	for (counter = 0; cmp[counter] != '\0'; counter++)
+	for (counter = 0; request_path[counter] != '\0'; counter++)
 	{
-		if (cmp[counter] != path[counter])
+		if (request_path[counter] != path[counter])
 			return (-1);
 	}
 	return (0);
@@ -23,14 +22,16 @@ int _getpath(char *path)
  * @envp: char * with the entire envp
  * Return: the PATH (NULL if not found)
  */
-char *_getenv(char *envp[])
+char *_getenv(char *envp[], char *request_path)
 {
 	char *envp_aux = NULL, *path = NULL, *path_return = NULL;
-	int counter;
+	int counter, getpath_result;
 
 	for (counter = 0; envp != NULL && envp[counter] != NULL; counter++)
 	{
-		if (_getpath(envp[counter]) == 0)
+		getpath_result = _getpath(envp[counter], request_path);
+
+		if (getpath_result == 0)
 		{
 			envp_aux = malloc(sizeof(char) * _strlen(envp[counter]));
 			if (!envp_aux)

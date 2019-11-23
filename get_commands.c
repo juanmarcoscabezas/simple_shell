@@ -9,7 +9,7 @@
  * @n_commands: the number of commands given until this point.
  * Return: Always 0
  */
-int get_commands(char *cp_argv[], char *buffer, char *envp[], int *n_commands)
+int get_commands(char *argv[], char *buffer, char *envp[], int *n_commands)
 {
 	char *token;
 	char **tokens;
@@ -32,7 +32,7 @@ int get_commands(char *cp_argv[], char *buffer, char *envp[], int *n_commands)
 		token = strtok(NULL, " \n");
 	}
 	tokens[pos] = NULL;
-	execute = execute_commands(cp_argv, tokens, envp, n_commands);
+	execute = execute_commands(argv, tokens, envp, n_commands);
 	free(tokens);
 	/* write(1, &execute, 1); */
 	return (execute);

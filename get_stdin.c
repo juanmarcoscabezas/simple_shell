@@ -11,7 +11,7 @@
  * @command: Command to proccess
  * Return: the value of execute_commands
  */
-int process_command(char *cp_argv[], char *envp[], int *n_cmds, char *command)
+int process_command(char *argv[], char *envp[], int *n_com, char *command)
 {
 	char *token;
 	char **tokens = malloc(sizeof(char *) * 64);
@@ -26,7 +26,7 @@ int process_command(char *cp_argv[], char *envp[], int *n_cmds, char *command)
 		token = strtok(NULL, LSH_TOK_DELIM);
 	}
 	tokens[pos] = NULL;
-	execute = execute_commands(cp_argv, tokens, envp, n_cmds);
+	execute = execute_commands(argv, tokens, envp, n_com);
 	free(tokens);
 	return (execute);
 }
@@ -39,7 +39,7 @@ int process_command(char *cp_argv[], char *envp[], int *n_cmds, char *command)
  * @number_commands: the number of commands given until this point.
  * Return: 0 on success
  **/
-void get_stdin(char *cp_argv[], char *envp[], int *number_commands)
+void get_stdin(char *argv[], char *envp[], int *number_commands)
 {
 	char *command = malloc(sizeof(char) * 1024);
 	int pos = 0;
@@ -51,7 +51,7 @@ void get_stdin(char *cp_argv[], char *envp[], int *number_commands)
 		command[pos] = ch;
 		if (ch == '\0' || ch == '\n')
 		{
-			execute = process_command(cp_argv, envp, number_commands, command);
+			execute = process_command(argv, envp, number_commands, command);
 			pos = -1;
 			command = malloc(sizeof(char) * 1024);
 			_memset(command, '\0', 1024);
