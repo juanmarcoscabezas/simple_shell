@@ -35,7 +35,7 @@ int check_exit(char *cp_argv[], char *number, int *n_com)
  */
 int built_in(char *cp_argv[], char *argv[], char *envp[], int *n_com)
 {
-	int counter = 0;
+	int counter = 0, chdir_exec;
 
 	if (argv != NULL)
 	{
@@ -66,6 +66,23 @@ int built_in(char *cp_argv[], char *argv[], char *envp[], int *n_com)
 					counter++;
 				}
 				(*n_com)++;
+				return (0);
+			}
+			if (_strcmp(argv[0], "cd") == 0)
+			{
+				if (argv[1])
+				{
+					chdir_exec = chdir(argv[1]);
+					if (chdir_exec != 0)
+					{
+						printf("%s: %d: cd: can't cd to %s\n", cp_argv[0], *n_com, argv[1]);
+						(*n_com)++;
+						return (2);
+					}
+					return (0);
+				}
+				(*n_com)++;
+				chdir("$HOME");
 				return (0);
 			}
 		}
