@@ -9,7 +9,7 @@
  * @envp: Enviroment variable
  * @n_cmds: Number of commands executed
  * @command: Command to proccess
- * Return:
+ * Return: the value of execute_commands
  */
 int process_command(char *cp_argv[], char *envp[], int *n_cmds, char *command)
 {
