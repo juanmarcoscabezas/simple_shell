@@ -3,9 +3,9 @@
 /**
  * execute_commands -  Execute commands
  * Description: Function that execute commands
- * @cp_argv: Copy of the original argv (the name of the executable)
- * @argv: Params
- * @envp: Enviroment params
+ * @argv: arguments passed to the shell
+ * @tokens: Options tokenized from a command
+ * @envp: enviroment variables passed to the shell
  * @n_com: the number of commands given until this point.
  * Return: 1
  */

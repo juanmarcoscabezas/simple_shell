@@ -3,13 +3,13 @@
 /**
  * get_commands - Gets the commands
  * Description: This function gets commands & break them in tokens
- * @cp_argv: Copy of the original argv (the name of the executable)
- * @buffer: Params
- * @envp: Enviroment params
+ * @argv: arguments passed to the shell
+ * @commands: commands passed to the shell
+ * @envp: enviroment variables passed to the shell
  * @n_commands: the number of commands given until this point.
  * Return: Always 0
  */
-int get_commands(char *argv[], char *buffer, char *envp[], int *n_commands)
+int get_commands(char *argv[], char *commands, char *envp[], int *n_commands)
 {
 	char *token;
 	char **tokens;
@@ -23,7 +23,7 @@ int get_commands(char *argv[], char *buffer, char *envp[], int *n_commands)
 		perror("Error on allocation");
 		exit(100);
 	}
-	token = strtok(buffer, " \n");
+	token = strtok(commands, " \n");
 
 	while (token)
 	{

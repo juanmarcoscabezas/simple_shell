@@ -5,9 +5,9 @@
 /**
  * process_command - Process every command
  * Description: THis function proccesses all the commands and execute it
- * @cp_argv: Copy of the original argv
- * @envp: Enviroment variable
- * @n_cmds: Number of commands executed
+ * @argv: arguments passed to the shell
+ * @envp: enviroment variables passed to the shell
+ * @n_com: the number of commands given until this point.
  * @command: Command to proccess
  * Return: the value of execute_commands
  */
@@ -34,8 +34,8 @@ int process_command(char *argv[], char *envp[], int *n_com, char *command)
 /**
  * get_stdin - function to get stdin.
  * Description: main
- * @cp_argv: Copy of the original argv (the name of the executable)
- * @envp: enviroment pass to the shell
+ * @argv: arguments passed to the shell
+ * @envp: enviroment variables passed to the shell
  * @number_commands: the number of commands given until this point.
  * Return: 0 on success
  **/

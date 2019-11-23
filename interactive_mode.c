@@ -2,12 +2,12 @@
 
 /**
  * interactive_mode - function in charge of shell interactive mode.
- * @cp_argv: Copy of the original argv (the name of the executable)
- * @envp: enviroment pass to the shell
- * @number_commands: the number of commands given until this point.
+ * @argv: arguments passed to the shell
+ * @envp: enviroment variables passed to the shell
+ * @n_com: the number of commands given until this point
  * Return: void
  **/
-void interactive_mode(char *argv[], char *envp[], int *number_commands)
+void interactive_mode(char *argv[], char *envp[], int *n_com)
 {
 	char *buffer;
 	size_t bufsize = 32;
@@ -25,9 +25,9 @@ void interactive_mode(char *argv[], char *envp[], int *number_commands)
 		printf("($) ");
 		getline_len = getline(&buffer, &bufsize, stdin);
 		if (getline_len > 1)
-			get_commands(argv, buffer, envp, number_commands);
+			get_commands(argv, buffer, envp, n_com);
 		else
-			(*number_commands)++;
+			(*n_com)++;
 
 		free(buffer);
 	}

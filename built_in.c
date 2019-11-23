@@ -3,9 +3,9 @@
 /**
  * check_exit - Look for the flag of exit
  * Description: This function checks the flag of exit
- * @cp_argv: Copy of passed arguments to main
+ * @argv: arguments passed to the shell
  * @number: Number to check if is an integer
- * @n_com: Number of commands executed
+ * @n_com: the number of commands given until this point.
  * Return: 0 if success, -1 otherwise
  */
 int check_exit(char *argv[], char *number, int *n_com)
@@ -27,10 +27,10 @@ int check_exit(char *argv[], char *number, int *n_com)
 /**
  * built_in - Built-ins
  * Description: This function is to check the built-ins
- * @cp_argv: Copy of passed arguments to main
- * @argv: Parameter to check if it's a built-in
- * @envp: Enviroment values
- * @n_com: Number of commands executed
+ * @argv: arguments passed to the shell
+ * @tokens: optiones tokenized from a command
+ * @envp: enviroment variables passed to the shell
+ * @n_com: the number of commands given until this point.
  * Return: the flag passed to exit, -1 otherwise
  */
 int built_in(char *argv[], char *tokens[], char *envp[], int *n_com)

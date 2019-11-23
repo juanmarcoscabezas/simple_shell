@@ -2,7 +2,9 @@
 
 /**
  * _getpath - get only the value of PATH form the env
- * @path: get the line to evaluate
+ * Description:
+ * @path: enviroment variable to check if it's equals to @request_path
+ * @request_path: variable to check
  * Return: 0 if the line contains "PATH" - -1 on failure
  */
 int _getpath(char *path, char *request_path)
@@ -19,7 +21,9 @@ int _getpath(char *path, char *request_path)
 
 /**
  * _getenv - get the entire envp
- * @envp: char * with the entire envp
+ * Description:
+ * @envp: enviroment variables passed to the shell
+ * @request_path: path to find in @envp
  * Return: the PATH (NULL if not found)
  */
 char *_getenv(char *envp[], char *request_path)
