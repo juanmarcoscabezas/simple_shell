@@ -11,12 +11,17 @@
  */
 int execute_commands(char *cp_argv[], char *argv[], char *envp[], int *n_com)
 {
-	int status, is_accessible, tmp;
+	int status, is_accessible, tmp, built_in_result;
 	pid_t pid;
 	char *path, *com_cpy;
 
-	if (built_in(cp_argv, argv, n_com) == -1)
-		return (-1);
+	/* Check built-in functions */
+	built_in_result = built_in(cp_argv, argv, envp, n_com);
+	if (built_in_result != 1)
+	{
+		(*n_com)++;
+		return (built_in_result);
+	}
 	/* Check if the file exists */
 	is_accessible = access(argv[0], F_OK);
 	/* If not accessible try to find in PATH */
