@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- * check_value - Look for the flag of exit
+ * check_exit - Look for the flag of exit
  * Description: This function checks the flag of exit
  * @cp_argv: Copy of passed arguments to main
  * @number: Number to check if is an integer
- * @num_com: Number of commands executed
+ * @n_com: Number of commands executed
  * Return: 0 if success, -1 otherwise
  */
-int check_exit(char *cp_argv[], char *number, int *num_com)
+int check_exit(char *cp_argv[], char *number, int *n_com)
 {
 	int counter = 0;
 
@@ -16,7 +16,7 @@ int check_exit(char *cp_argv[], char *number, int *num_com)
 	{
 		if (number[counter] < 48 || number[counter] > 57)
 		{
-			printf("%s: %d: exit: Illegal number: %s\n", cp_argv[0], *num_com, number);
+			printf("%s: %d: exit: Illegal number: %s\n", cp_argv[0], *n_com, number);
 			return (127);
 		}
 		counter++;
@@ -29,6 +29,7 @@ int check_exit(char *cp_argv[], char *number, int *num_com)
  * Description: This function is to check the built-ins
  * @cp_argv: Copy of passed arguments to main
  * @argv: Parameter to check if it's a built-in
+ * @envp: Enviroment values
  * @n_com: Number of commands executed
  * Return: the flag passed to exit, -1 otherwise
  */
@@ -46,6 +47,7 @@ int built_in(char *cp_argv[], char *argv[], char *envp[], int *n_com)
 				{
 					if (check_exit(cp_argv, argv[1], n_com) == 0)
 						exit(_atoi(argv[1]));
+					(*n_com)++;
 					return (127);
 				}
 				exit(0);
@@ -55,6 +57,7 @@ int built_in(char *cp_argv[], char *argv[], char *envp[], int *n_com)
 				if (argv[1])
 				{
 					printf("env: %s: No such file or directory\n", argv[1]);
+					(*n_com)++;
 					return (127);
 				}
 				while (envp[counter])
@@ -62,6 +65,7 @@ int built_in(char *cp_argv[], char *argv[], char *envp[], int *n_com)
 					printf("%s\n", envp[counter]);
 					counter++;
 				}
+				(*n_com)++;
 				return (0);
 			}
 		}
