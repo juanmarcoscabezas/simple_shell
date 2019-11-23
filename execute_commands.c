@@ -32,7 +32,7 @@ int execute_commands(char *cp_argv[], char *argv[], char *envp[], int *n_com)
 			(*n_com)++;
 			if (path)
 				free(path);
-			return (-1);
+			return (127);
 		}
 	}
 	if (path)

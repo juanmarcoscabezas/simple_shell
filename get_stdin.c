@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #define LSH_TOK_DELIM " \t\r\n\a"
 
 /**
@@ -10,11 +11,12 @@
  * @command: Command to proccess
  * Return:
  */
-void process_command(char *cp_argv[], char *envp[], int *n_cmds, char *command)
+int process_command(char *cp_argv[], char *envp[], int *n_cmds, char *command)
 {
 	char *token;
 	char **tokens = malloc(sizeof(char *) * 64);
 	int pos = 0;
+	int execute;
 
 	token = strtok(command, LSH_TOK_DELIM);
 	while (token)
@@ -24,8 +26,9 @@ void process_command(char *cp_argv[], char *envp[], int *n_cmds, char *command)
 		token = strtok(NULL, LSH_TOK_DELIM);
 	}
 	tokens[pos] = NULL;
-	execute_commands(cp_argv, tokens, envp, n_cmds);
+	execute = execute_commands(cp_argv, tokens, envp, n_cmds);
 	free(tokens);
+	return (execute);
 }
 
 /**
@@ -41,18 +44,19 @@ void get_stdin(char *cp_argv[], char *envp[], int *number_commands)
 	char *command = malloc(sizeof(char) * 1024);
 	int pos = 0;
 	char ch;
+	int execute;
 
 	while (read(STDIN_FILENO, &ch, 1) > 0)
 	{
 		command[pos] = ch;
 		if (ch == '\0' || ch == '\n')
 		{
-			process_command(cp_argv, envp, number_commands, command);
+			execute = process_command(cp_argv, envp, number_commands, command);
 			pos = -1;
 			command = malloc(sizeof(char) * 1024);
 			_memset(command, '\0', 1024);
 		}
 		pos++;
 	}
-	exit(0);
+	exit(execute);
 }

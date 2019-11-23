@@ -14,6 +14,7 @@ int get_commands(char *cp_argv[], char *buffer, char *envp[], int *n_commands)
 	char *token;
 	char **tokens;
 	int pos = 0;
+	int execute;
 
 	tokens = malloc(sizeof(char *) * 64);
 
@@ -31,7 +32,7 @@ int get_commands(char *cp_argv[], char *buffer, char *envp[], int *n_commands)
 		token = strtok(NULL, " \n");
 	}
 	tokens[pos] = NULL;
-	execute_commands(cp_argv, tokens, envp, n_commands);
+	execute = execute_commands(cp_argv, tokens, envp, n_commands);
 	free(tokens);
-	return (0);
+	return (execute);
 }
