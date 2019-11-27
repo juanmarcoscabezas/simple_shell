@@ -1,11 +1,10 @@
 #include "shell.h"
 
 /**
- *
- *
- *
- *
- *
+ * verify_tab - Function to verify tabs
+ * @command: Command to verify
+ * @command_len: Length of the command to verify
+ * Return: 0 on success, -1 otherwise
  */
 int verify_tab(char *command, ssize_t command_len)
 {
@@ -66,6 +65,8 @@ void interactive_mode(char *argv[], char *envp[], int *n_com)
 		{
 			if (verify_tab(buffer, getline_len) == 0)
 				get_commands(argv, buffer, envp, n_com);
+			else
+				(*n_com)++;
 		}
 		else
 			(*n_com)++;

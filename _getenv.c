@@ -37,6 +37,8 @@ char *_getenv(char *envp[], char *request_path)
 
 		if (getpath_result == 0)
 		{
+			if (_strlen(envp[counter]) == _strlen(request_path) + 1)
+				return (NULL);
 			envp_aux = malloc(sizeof(char) * _strlen(envp[counter]));
 			if (!envp_aux)
 				return (NULL);
