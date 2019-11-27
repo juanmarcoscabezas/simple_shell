@@ -2,7 +2,7 @@
 #define LSH_TOK_DELIM " \t\r\n\a"
 
 /**
- * process_command - Process every command
+ * process_command2 - Process every command
  * Description: THis function proccesses all the commands and execute it
  * @argv: arguments passed to the shell
  * @envp: enviroment variables passed to the shell
@@ -31,7 +31,7 @@ int process_command2(char *argv[], char *envp[], int *n_com, char *command)
 }
 
 /**
- * get_stdin - function to get stdin.
+ * get_stdin2 - function to get stdin.
  * Description: main
  * @argv: arguments passed to the shell
  * @envp: enviroment variables passed to the shell
@@ -62,13 +62,15 @@ void get_stdin2(char *argv[], char *envp[], int *number_commands)
 
 /**
  * read_file - function
- * @argv: Name of the file
+ * @argv: arguments passed to the shell
+ * @envp: enviroment variables passed to the shell
+ * @n_com: the number of commands given until this point.
  * Return: actual number of letters it could print
  */
 int read_file(char *argv[], char *envp[], int *n_com)
 {
 	int file, letters = 1024;
-	char *buffer, *filename = argv[1], n;
+	char *buffer, *filename = argv[0], n;
 
 	file = open(filename, O_RDONLY);
 	if (file == -1)
