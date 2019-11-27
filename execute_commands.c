@@ -13,7 +13,7 @@ int execute_commands(char *argv[], char *tokens[], char *envp[], int *n_com)
 {
 	int status, is_accessible, tmp, built_in_result;
 	pid_t pid;
-	char *path, *com_cpy;
+	char *path = NULL, *com_cpy;
 
 	/* Check built-in functions */
 	built_in_result = built_in(argv, tokens, envp, n_com);
@@ -37,7 +37,7 @@ int execute_commands(char *argv[], char *tokens[], char *envp[], int *n_com)
 			return (127);
 		}
 	}
-	if (path)
+	if (path && is_accessible == -1)
 		free(path);
 	(*n_com)++;
 	pid = fork();
@@ -48,6 +48,7 @@ int execute_commands(char *argv[], char *tokens[], char *envp[], int *n_com)
 	}
 	else
 		wait(&status);
-	free(tokens[0]);
+	if (is_accessible == -1)
+		free(tokens[0]);
 	return (0);
 }

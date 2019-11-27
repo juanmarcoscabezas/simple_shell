@@ -22,7 +22,7 @@ void interactive_mode(char *argv[], char *envp[], int *n_com)
 			exit(100);
 		}
 
-		dprintf(STDOUT_FILENO, "($) ");
+		dprintf(STDOUT_FILENO, "#cisfun$ ");
 		getline_len = getline(&buffer, &bufsize, stdin);
 		if (getline_len > 1)
 			get_commands(argv, buffer, envp, n_com);
