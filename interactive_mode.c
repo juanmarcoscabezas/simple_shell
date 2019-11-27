@@ -14,7 +14,7 @@ int verify_tab(char *command, ssize_t command_len)
 	{
 		if (command[counter] != '\t' && command[counter] != '\n')
 		{
-			if (command[counter] != ' ')
+			if (command[counter] != ' ' && command[counter] != '\0')
 				return (0);
 		}
 		counter++;

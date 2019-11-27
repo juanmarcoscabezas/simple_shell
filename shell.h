@@ -30,4 +30,5 @@ int _atoi(char *s);
 void _puts(char *s);
 int _putchar(char c);
 void print_number(int *n);
+int verify_tab(char *command, ssize_t command_len);
 #endif

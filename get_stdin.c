@@ -56,7 +56,8 @@ void get_stdin(char *argv[], char *envp[], int *number_commands)
 		if (ch == '\0' || ch == '\n')
 		{
 			command[pos + 1] = '\0';
-			execute = process_command(argv, envp, number_commands, command);
+			if (verify_tab(command, _strlen(command)) == 0)
+				execute = process_command(argv, envp, number_commands, command);
 			pos = -1;
 			free(command);
 			command = malloc(sizeof(char) * 1024);
