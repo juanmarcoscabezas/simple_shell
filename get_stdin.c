@@ -51,11 +51,13 @@ void get_stdin(char *argv[], char *envp[], int *number_commands)
 		{
 			execute = process_command(argv, envp, number_commands, command);
 			pos = -1;
+			free(command);
 			command = malloc(sizeof(char) * 1024);
 			_memset(command, '\0', 1024);
 		}
 		pos++;
 	}
+	free(command);
 	execute = 0;
 	exit(execute);
 }
