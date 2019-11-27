@@ -1,5 +1,9 @@
 #include "shell.h"
-
+/**
+ * handle_sig - function that take care of the interrupt signals.
+ * @sig: signal integer
+ * Return: void
+ **/
 void handle_sig(int sig)
 {
 	(void) sig;
@@ -17,7 +21,7 @@ void interactive_mode(char *argv[], char *envp[], int *n_com)
 	char *buffer;
 	size_t bufsize = 32;
 	ssize_t getline_len;
-	
+
 	signal(SIGINT, handle_sig);
 	while (1)
 	{
