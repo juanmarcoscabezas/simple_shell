@@ -13,7 +13,7 @@
 #include <errno.h>
 
 void get_stdin(char *argv[], char *envp[], int *number_commands);
-int read_file(char *argv[]);
+int read_file(char *argv[], char *envp[], int *number_commands);
 int get_commands(char *argv[], char *buffer, char *envp[], int *n_commands);
 char *_getenv(char *envp[], char *request_path);
 char *check_access(char *path, char *command);

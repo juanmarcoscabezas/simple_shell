@@ -27,7 +27,7 @@ int main(int argc, char *argv[], char *envp[])
 	}
 	else
 	{
-		read_file(++argv);
+		read_file(argv, envp, &number_commands);
 		return (2);
 	}
 }

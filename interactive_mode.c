@@ -22,7 +22,7 @@ void interactive_mode(char *argv[], char *envp[], int *n_com)
 			exit(100);
 		}
 
-		printf("($) ");
+		dprintf(STDOUT_FILENO, "($) ");
 		getline_len = getline(&buffer, &bufsize, stdin);
 		if (getline_len > 1)
 			get_commands(argv, buffer, envp, n_com);

@@ -1,7 +1,5 @@
 #include "shell.h"
 
-#define LSH_TOK_DELIM " \t\r\n\a"
-
 /**
  * process_command - Process every command
  * Description: THis function proccesses all the commands and execute it
@@ -18,12 +16,12 @@ int process_command(char *argv[], char *envp[], int *n_com, char *command)
 	int pos = 0;
 	int execute;
 
-	token = strtok(command, LSH_TOK_DELIM);
+	token = strtok(command, " \t\r\n\a");
 	while (token)
 	{
 		tokens[pos] = token;
 		pos++;
-		token = strtok(NULL, LSH_TOK_DELIM);
+		token = strtok(NULL, " \t\r\n\a");
 	}
 	tokens[pos] = NULL;
 	execute = execute_commands(argv, tokens, envp, n_com);
