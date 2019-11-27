@@ -1,4 +1,26 @@
 #include "shell.h"
+
+/**
+ *
+ *
+ *
+ *
+ *
+ */
+int verify_tab(char *command, ssize_t command_len)
+{
+	ssize_t counter = 0;
+
+	while (counter < command_len)
+	{
+		if (command[counter] != '\t' && command[counter] != '\n')
+		{
+			return (0);
+		}
+		counter++;
+	}
+	return (-1);
+}
 /**
  * handle_sig - function that take care of the interrupt signals.
  * @sig: signal integer
@@ -41,7 +63,10 @@ void interactive_mode(char *argv[], char *envp[], int *n_com)
 			exit(0);
 		}
 		if (getline_len > 1)
-			get_commands(argv, buffer, envp, n_com);
+		{
+			if (verify_tab(buffer, getline_len) == 0)
+				get_commands(argv, buffer, envp, n_com);
+		}
 		else
 			(*n_com)++;
 

@@ -23,13 +23,13 @@ int get_commands(char *argv[], char *commands, char *envp[], int *n_commands)
 		perror("Error on allocation");
 		exit(0);
 	}
-	token = strtok(commands, " \n");
+	token = strtok(commands, " \t\r\n\a");
 
 	while (token)
 	{
 		tokens[pos] = token;
 		pos++;
-		token = strtok(NULL, " \n");
+		token = strtok(NULL, " \t\r\n\a");
 	}
 	tokens[pos] = NULL;
 	execute = execute_commands(argv, tokens, envp, n_commands);
