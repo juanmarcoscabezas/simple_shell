@@ -11,10 +11,10 @@
  */
 int process_command(char *argv[], char *envp[], int *n_com, char *command)
 {
-	char *token;
+	char *token = NULL;
 	char **tokens = malloc(sizeof(char *) * 64);
 	int pos = 0;
-	int execute;
+	int execute = 0;
 
 	token = strtok(command, " \t\r\n\a");
 	while (token)
