@@ -1,18 +1,16 @@
 #ifndef SHELL_FILE
 #define SHELL_FILE
 
-#define _POSIX_C_SOURCE  200809L
-#define _GNU_SOURCE
-#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <signal.h>
 #include <errno.h>
+#include <string.h>
+#include <stdio.h>
 
 void get_stdin(char *argv[], char *envp[], int *number_commands);
 int read_file(char *argv[], char *envp[], int *number_commands);

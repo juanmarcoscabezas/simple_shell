@@ -1,6 +1,24 @@
 #include "shell.h"
 
 /**
+ * print_parameters - Function to print parameters becouse of betty
+ * Description: Function to print parameters becouse of betty
+ * @argv_param: Name of file
+ * @n_com: Number of commands inserted
+ * @com_cpy: Command that was executed
+ * Return:
+ */
+void print_parameters(char *argv_param, int *n_com, char *com_cpy)
+{
+	_puts(argv_param);
+	_puts(": ");
+	print_number(n_com);
+	_puts(": ");
+	_puts(com_cpy);
+	_puts(": not found\n");
+}
+
+/**
  * execute_commands -  Execute commands
  * Description: Function that execute commands
  * @argv: arguments passed to the shell
@@ -29,12 +47,7 @@ int execute_commands(char *argv[], char *tokens[], char *envp[], int *n_com)
 		tokens[0] = check_access(path, tokens[0]);
 		if (tokens[0] == NULL)
 		{
-			_puts(argv[0]);
-			_puts(": ");
-			print_number(n_com);
-			_puts(": ");
-			_puts(com_cpy);
-			_puts(": not found\n");
+			print_parameters(argv[0], n_com, com_cpy);
 			(*n_com)++;
 			if (path)
 				free(path);
