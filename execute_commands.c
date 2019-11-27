@@ -6,16 +6,45 @@
  * @argv_param: Name of file
  * @n_com: Number of commands inserted
  * @com_cpy: Command that was executed
+ * @errnd: Error end of the message
  * Return:
  */
-void print_parameters(char *argv_param, int *n_com, char *com_cpy)
+void print_parameters(char *argv_param, int *n_com, char *com_cpy, char *errnd)
 {
 	_puts(argv_param);
 	_puts(": ");
 	print_number(n_com);
 	_puts(": ");
 	_puts(com_cpy);
-	_puts(": not found\n");
+	_puts(errnd);
+}
+
+/**
+ * check_directory - Function that checks if the path is a directory
+ * @filename: path to check
+ * @n_com: number of commands
+ * @token: token to find
+ * Return: 126 if filename is a directory, 0 otherwise
+ */
+int check_directory(char *filename, int *n_com, char *token)
+{
+	struct stat st;
+
+	st.st_mode = 0;
+	stat(token, &st);
+	if ((st.st_mode & S_IFMT) == S_IFDIR)
+	{
+		print_parameters(filename, n_com, token, ": Permission denied\n");
+		(*n_com)++;
+		return (126);
+	}
+	if (access(token, X_OK) == -1 && token[0] == '.' && token[1] == '/')
+	{
+		print_parameters(filename, n_com, token, ": Permission denied\n");
+		(*n_com)++;
+		return (126);
+	}
+	return (0);
 }
 
 /**
@@ -38,16 +67,17 @@ int execute_commands(char *argv[], char *tokens[], char *envp[], int *n_com)
 	if (built_in_result != 1)
 		return (built_in_result);
 	/* Check if the file exists */
+	if (check_directory(argv[0], n_com, tokens[0]) != 0)
+		return (126);
 	is_accessible = access(tokens[0], F_OK | X_OK | R_OK);
 	/* If not accessible try to find in PATH */
 	if (is_accessible == -1)
-	{
-		path = _getenv(envp, "PATH");
+	{path = _getenv(envp, "PATH");
 		com_cpy = tokens[0];
 		tokens[0] = check_access(path, tokens[0]);
 		if (tokens[0] == NULL)
 		{
-			print_parameters(argv[0], n_com, com_cpy);
+			print_parameters(argv[0], n_com, com_cpy, ": not found\n");
 			(*n_com)++;
 			if (path)
 				free(path);
