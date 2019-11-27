@@ -18,6 +18,8 @@ int check_exit(char *argv[], char *num, int *n_com)
 		if (num[counter] < 48 || num[counter] > 57)
 		{
 			err_msg = "exit: Illegal number";
+			_puts(argv[0]);
+			print_number(n_com);
 			dprintf(STDERR_FILENO, "%s: %d: %s: %s\n", argv[0], *n_com, err_msg, num);
 			return (127);
 		}

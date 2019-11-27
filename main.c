@@ -17,17 +17,15 @@ int main(int argc, char *argv[], char *envp[])
 		if (isatty(STDIN_FILENO))
 		{
 			interactive_mode(argv, envp, &number_commands);
-			return (0);
 		}
 		else
 		{
 			get_stdin(argv, envp, &number_commands);
-			return (1);
 		}
 	}
 	else
 	{
 		read_file(argv, envp, &number_commands);
-		return (2);
 	}
+	return (0);
 }

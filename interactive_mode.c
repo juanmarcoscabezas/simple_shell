@@ -7,7 +7,7 @@
 void handle_sig(int sig)
 {
 	(void) sig;
-	write(STDOUT_FILENO, "\n#cisfun$ ", 10);
+	_puts("\n#cisfun$ ");
 }
 /**
  * interactive_mode - function in charge of shell interactive mode.
@@ -32,12 +32,12 @@ void interactive_mode(char *argv[], char *envp[], int *n_com)
 			exit(100);
 		}
 
-		dprintf(STDOUT_FILENO, "#cisfun$ ");
+		_puts("#cisfun$ ");
 		getline_len = getline(&buffer, &bufsize, stdin);
 		if (getline_len == EOF)
 		{
 			free(buffer);
-			write(STDOUT_FILENO, "\n", 1);
+			_putchar('\n');
 			exit(0);
 		}
 		if (getline_len > 1)
