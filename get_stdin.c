@@ -65,5 +65,9 @@ void get_stdin(char *argv[], char *envp[], int *number_commands)
 		pos++;
 	}
 	free(command);
+<<<<<<< HEAD
+=======
+	execute = 0;
+>>>>>>> cd35237d5c8da0091379286484473005f9e18ca9
 	exit(execute);
 }
