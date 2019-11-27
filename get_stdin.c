@@ -56,5 +56,6 @@ void get_stdin(char *argv[], char *envp[], int *number_commands)
 		}
 		pos++;
 	}
+	execute = 0;
 	exit(execute);
 }
