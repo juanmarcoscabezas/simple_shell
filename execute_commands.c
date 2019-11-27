@@ -38,7 +38,7 @@ int execute_commands(char *argv[], char *tokens[], char *envp[], int *n_com)
 	if (built_in_result != 1)
 		return (built_in_result);
 	/* Check if the file exists */
-	is_accessible = access(tokens[0], F_OK);
+	is_accessible = access(tokens[0], F_OK | X_OK | R_OK);
 	/* If not accessible try to find in PATH */
 	if (is_accessible == -1)
 	{

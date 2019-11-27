@@ -62,7 +62,7 @@ char *check_access(char *path, char *command)
 		_strcat(cat_command, "/");
 		_strcat(cat_command, command);
 
-		status = access(cat_command, F_OK);
+		status = access(cat_command, F_OK | X_OK | R_OK);
 		if (status == 0)
 		{
 			return (cat_command);
