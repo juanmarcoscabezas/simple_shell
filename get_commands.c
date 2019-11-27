@@ -21,7 +21,7 @@ int get_commands(char *argv[], char *commands, char *envp[], int *n_commands)
 	if (!tokens)
 	{
 		perror("Error on allocation");
-		exit(100);
+		exit(0);
 	}
 	token = strtok(commands, " \n");
 
