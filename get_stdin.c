@@ -12,11 +12,14 @@
 int process_command(char *argv[], char *envp[], int *n_com, char *command)
 {
 	char *token = NULL;
-	char **tokens = malloc(sizeof(char *) * 64);
+	char **tokens = NULL;
+	char *command_cpy = command;
 	int pos = 0;
 	int execute = 0;
 
-	token = strtok(command, " \t\r\n\a");
+	tokens = malloc(sizeof(char *) * 64);
+
+	token = strtok(command_cpy, " \t\r\n\a");
 	while (token)
 	{
 		tokens[pos] = token;
@@ -39,16 +42,20 @@ int process_command(char *argv[], char *envp[], int *n_com, char *command)
  **/
 void get_stdin(char *argv[], char *envp[], int *number_commands)
 {
-	char *command = malloc(sizeof(char) * 1024);
+	char *command;
 	int pos = 0;
-	char ch;
-	int execute;
+	char ch = '\0';
+	int execute = 0;
 
+	command = malloc(sizeof(char) * 1024);
+	if (!command)
+		exit(0);
 	while (read(STDIN_FILENO, &ch, 1) > 0)
 	{
 		command[pos] = ch;
 		if (ch == '\0' || ch == '\n')
 		{
+			command[pos + 1] = '\0';
 			execute = process_command(argv, envp, number_commands, command);
 			pos = -1;
 			free(command);
@@ -58,6 +65,5 @@ void get_stdin(char *argv[], char *envp[], int *number_commands)
 		pos++;
 	}
 	free(command);
-	execute = 0;
 	exit(execute);
 }
