@@ -18,9 +18,15 @@ int check_exit(char *argv[], char *num, int *n_com)
 		if (num[counter] < 48 || num[counter] > 57)
 		{
 			err_msg = "exit: Illegal number";
+
 			_puts(argv[0]);
+			_puts(": ");
 			print_number(n_com);
-			dprintf(STDERR_FILENO, "%s: %d: %s: %s\n", argv[0], *n_com, err_msg, num);
+			_puts(": ");
+			_puts(err_msg);
+			_puts(": ");
+			_puts(num);
+			_putchar('\n');
 			return (127);
 		}
 		counter++;
@@ -42,13 +48,16 @@ int check_env(char *tokens[], char *envp[], int *n_com)
 
 	if (tokens[1])
 	{
-		dprintf(STDERR_FILENO, "env: %s: No such file or directory\n", tokens[1]);
+		_puts("env: ");
+		_puts(tokens[1]);
+		_puts(": No such file or directory\n");
 		(*n_com)++;
 		return (127);
 	}
 	while (envp[counter])
 	{
-		dprintf(STDOUT_FILENO, "%s\n", envp[counter]);
+		_puts(envp[counter]);
+		_putchar('\n');
 		counter++;
 	}
 	(*n_com)++;
@@ -76,7 +85,15 @@ int check_cd(char *argv[], char *tokens[], char *envp[], int *n_com)
 		if (chdir_exec != 0)
 		{
 			er_m = "cd: can't cd to";
-			dprintf(STDERR_FILENO, "%s: %d: %s %s\n", argv[0], *n_com, er_m, tokens[1]);
+
+			_puts(argv[0]);
+			_puts(": ");
+			print_number(n_com);
+			_puts(": ");
+			_puts(er_m);
+			_puts(" ");
+			_puts(tokens[1]);
+			_putchar('\n');
 			(*n_com)++;
 			return (2);
 		}

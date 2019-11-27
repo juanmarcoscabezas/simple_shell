@@ -11,7 +11,7 @@
  */
 int execute_commands(char *argv[], char *tokens[], char *envp[], int *n_com)
 {
-	int status, is_accessible, tmp, built_in_result;
+	int status, is_accessible, built_in_result;
 	pid_t pid;
 	char *path = NULL, *com_cpy;
 
@@ -29,8 +29,12 @@ int execute_commands(char *argv[], char *tokens[], char *envp[], int *n_com)
 		tokens[0] = check_access(path, tokens[0]);
 		if (tokens[0] == NULL)
 		{
-			tmp = *n_com;
-			dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", argv[0], tmp, com_cpy);
+			_puts(argv[0]);
+			_puts(": ");
+			print_number(n_com);
+			_puts(": ");
+			_puts(com_cpy);
+			_puts(": not found\n");
 			(*n_com)++;
 			if (path)
 				free(path);

@@ -89,7 +89,7 @@ int read_file(char *argv[], char *envp[], int *n_com)
 		return (-1);
 	}
 	n = write(1, buffer, n);
-	dprintf(STDOUT_FILENO, "%s", buffer);
+	/* (STDOUT_FILENO, "%s", buffer); */
 	if (n == -1)
 	{
 		free(buffer);

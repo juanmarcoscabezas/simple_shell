@@ -34,6 +34,5 @@ int get_commands(char *argv[], char *commands, char *envp[], int *n_commands)
 	tokens[pos] = NULL;
 	execute = execute_commands(argv, tokens, envp, n_commands);
 	free(tokens);
-	/* write(1, &execute, 1); */
 	return (execute);
 }
