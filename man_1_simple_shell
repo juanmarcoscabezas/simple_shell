@@ -13,6 +13,7 @@ hsh is a simple shell that works on linux systems, that executes commands from t
 .SH INVOCATION
 
 \&$ ./hsh
+.br
 \&#cisfun$
 
 Will get into interactive mode.
