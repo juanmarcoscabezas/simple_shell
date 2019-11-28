@@ -119,31 +119,32 @@ int check_cd(char *argv[], char *tokens[], char *envp[], int *n_com)
  */
 int built_in(char *argv[], char *tokens[], char *envp[], int *n_com, int *lo)
 {
-	if (tokens != NULL)
+	if (tokens != NULL && tokens[0])
 	{
-		if (tokens[0])
+		if (_strcmp(tokens[0], "exit") == 0)
 		{
-			if (_strcmp(tokens[0], "exit") == 0)
+			if (tokens[1])
 			{
-				if (tokens[1])
+				if (check_exit(argv, tokens[1], n_com) == 0)
 				{
-					if (check_exit(argv, tokens[1], n_com) == 0)
-						exit(_atoi(tokens[1]));
-					(*n_com)++;
-					return (127);
+					if (_atoi(tokens[1]) > 255)
+						exit(_atoi(tokens[1]) % 256);
+					exit(_atoi(tokens[1]));
 				}
-				if (lo)
-					exit(*lo);
-				exit(0);
+				(*n_com)++;
+				return (127);
 			}
-			if (_strcmp(tokens[0], "env") == 0)
-			{
-				return (check_env(tokens, envp, n_com));
-			}
-			if (_strcmp(tokens[0], "cd") == 0)
-			{
-				return (check_cd(argv, tokens, envp, n_com));
-			}
+			if (lo)
+				exit(*lo);
+			exit(0);
+		}
+		if (_strcmp(tokens[0], "env") == 0)
+		{
+			return (check_env(tokens, envp, n_com));
+		}
+		if (_strcmp(tokens[0], "cd") == 0)
+		{
+			return (check_cd(argv, tokens, envp, n_com));
 		}
 	}
 	return (1);
