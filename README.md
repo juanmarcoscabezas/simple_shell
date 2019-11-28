@@ -62,13 +62,13 @@ check_access.c  _getenv.c           interactive_mode.c  man_1_simple_shell  READ
 $
 ```
 
-# Tasks
-
-
 
 # General Test Cases
 
 - [x] ./hsh;
 - [x] echo "/bin/ls" | ./hsh
-- [x] ./hsh FILENAME
-
+- [x] echo "asdfaas" | ./hsh
+- [x] #cisfun$ ls
+- [x] #cisfun$ ls -l
+- [x] #cisfun$ cd folder/
+- [x] #cisfun$ pwd
