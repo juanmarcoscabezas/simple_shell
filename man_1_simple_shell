@@ -16,7 +16,6 @@ hsh is a simple shell that works on linux systems, that executes commands from t
 
 Will get into interactive mode, the prompt sould look
 
-.RS
 \&#cisfun$ 
 
 Can be use redirecting the standart output
