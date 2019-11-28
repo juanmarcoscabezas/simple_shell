@@ -57,8 +57,5 @@ No known bugs. For the current scope, but they are going to be added has they ar
 .SH BUGS REPORTS
 All bug reports go to https://github.com/juanmarcoscabezas/simple_shell, or the emails in the AUTHORS file in the repository.
 
-.SH "SEE ALSO"
-.SH sh
-
 .SH "AUTHORS"
-Sidney Burkett and Greg Dame
+Hugo Bayona && Juan Marcos Cabezas
