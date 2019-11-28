@@ -50,11 +50,14 @@ $ ./hsh
 "interactive mode"
 #cisfun$
 #cisfun$ exit
->
+$
 ```
 ```bash
 $ echo "/bin/ls" | ./hsh
-
+AUTHORS         execute_commands.c  get_stdin.c         lib.c               _print.c     shell.h
+built_in.c      get_commands.c      hsh                 main.c              read_file.c  _string.c
+check_access.c  _getenv.c           interactive_mode.c  man_1_simple_shell  README.md
+$
 ```
 
 # Tasks
