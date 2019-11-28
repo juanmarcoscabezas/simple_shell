@@ -15,7 +15,7 @@
 
 void get_stdin(char *argv[], char *envp[], int *number_commands);
 int read_file(char *argv[], char *envp[], int *number_commands);
-int get_commands(char *argv[], char *buffer, char *envp[], int *n_cmds, int *lo);
+int get_commands(char *argv[], char *buf, char *en[], int *n_cmds, int *lo);
 char *_getenv(char *envp[], char *request_path);
 char *check_access(char *path, char *command);
 int _strlen(char *s);
