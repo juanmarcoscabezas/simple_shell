@@ -127,14 +127,10 @@ int built_in(char *argv[], char *tokens[], char *envp[], int *n_com, int *lo)
 			{
 				if (check_exit(argv, tokens[1], n_com) == 0)
 				{
-					if (_atoi(tokens[1]) > 255)
-						exit(_atoi(tokens[1]) % 256);
 					exit(_atoi(tokens[1]));
-				}
 				(*n_com)++;
 				return (127);
 			}
-			free(tokens);
 			if (lo)
 				exit(*lo);
 			exit(0);
