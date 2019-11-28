@@ -3,7 +3,7 @@
 The simple shell project is the largest and most difficult project we have worked on at Holberton School.
 This project consists of creating a shell so that it behaves very similar to the Bourne Shell "sh".
 
-This project was built by Alejandro López and Juan Marcos Cabezas
+This project was built by Hugo Bayona and Juan Marcos Cabezas
 
 # Table of Contents
 1. [Authors](#Authors)
