@@ -52,8 +52,7 @@ Builtins functions.
 - Can change the current directory to another one.
 
 .SH BUGS
-No known bugs, but hey we aren't perfect. Please report any bugs to the twitter\
- accounts @gjdame or @sidneyriffic
+No known bugs. For the current scope, but they are going to be added has they are found.
 
 .SH "SEE ALSO"
 .SH sh
