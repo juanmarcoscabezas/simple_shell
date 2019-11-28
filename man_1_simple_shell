@@ -1,0 +1,71 @@
+.TH hsh 1 "27 November 2019" "1.0" "Holberton SHell Maunal"
+
+.SH NAME
+hsh \- Holberton Simple Shell
+
+.SH SYNOPSIS
+.B echo "command" | ./hsh
+
+.SH DESCRIPTION
+
+hsh is a simple shell that works on linux systems, that executes commands from the standard input.
+
+.SH INVOCATION
+.br
+- Interactive mode.
+.br
+.br
+\&$ ./hsh
+.br
+\&#cisfun$
+.br
+.br 
+
+- Redirecting the standart output.
+
+\&$ echo "/bin/ls -l" | ./hsh
+
+.SH FEATURES
+.br
+- Display a prompt and wait for the user to type a command.
+.br
+.br
+- The commands lines handle arguments
+.br
+.br
+- If an executable cannot be found, print an error message and display the prompt again
+.br
+.br
+- Handle the “end of file” condition (Ctrl+D) and the signal (Ctrl+C)
+.br
+.br
+- Print the enviroment with 'env'
+
+
+.SH BUILT-IN
+.br
+.B
+env
+.br
+- - Print the environment.
+.br
+.br
+.B
+exit
+.br
+- - Exit with a status custom status.
+.br
+.br
+.B 
+cd
+.br
+- - Can change the current directory to another one.
+
+.SH BUGS
+No known bugs. For the current scope, but they are going to be added has they are found.
+
+.SH BUGS REPORTS
+All bug reports go to https://github.com/juanmarcoscabezas/simple_shell, or the emails in the AUTHORS file in the repository.
+
+.SH "AUTHORS"
+Hugo Bayona && Juan Marcos Cabezas
