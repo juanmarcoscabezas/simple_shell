@@ -31,6 +31,7 @@ This project was built by Hugo Bayona and Juan Marcos Cabezas
 - The commands lines handle arguments.
 - If an executable cannot be found, print an error message and display the prompt again.
 - Handle the “end of file” condition (Ctrl+D) and the signal (Ctrl+C).
+- Print the enviroment with 'env'.
 
 # How Use
 
