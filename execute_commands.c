@@ -98,5 +98,5 @@ int exec_cmds(char *argv[], char *tokens[], char *envp[], int *n_com, int *lo)
 	}
 	if (is_accessible == -1)
 		free(tokens[0]);
-	return (*lo);
+	return (0);
 }
