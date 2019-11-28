@@ -54,6 +54,9 @@ Builtins functions.
 .SH BUGS
 No known bugs. For the current scope, but they are going to be added has they are found.
 
+.SH BUGS REPORTS
+All bug reports go to https://github.com/juanmarcoscabezas/simple_shell, or the emails in the AUTHORS file in the repository.
+
 .SH "SEE ALSO"
 .SH sh
 
