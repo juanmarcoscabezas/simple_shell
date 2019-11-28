@@ -132,6 +132,7 @@ int built_in(char *argv[], char *tokens[], char *envp[], int *n_com, int *lo)
 					(*n_com)++;
 					return (127);
 				}
+				free(tokens);
 				if (lo)
 					exit(*lo);
 				exit(0);
