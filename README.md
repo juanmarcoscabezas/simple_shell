@@ -31,10 +31,11 @@ This project was built by Alejandro López and Juan Marcos Cabezas
 - If an executable cannot be found, print an error message and display the prompt again.
 - Handle the “end of file” condition (Ctrl+D) and the signal (Ctrl+C).
 
-
 # How Use
 
 ## How to compile
+
+gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 
 ### Requirements
 
