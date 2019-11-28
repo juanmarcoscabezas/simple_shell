@@ -41,17 +41,12 @@ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 
  - compile on Ubuntu 14.04 LTS
  - compile with gcc 4.8.4
- 
-### Flags to compile
-
-`$ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh`
 
 ### Examples
 
 ```bash
-./hsh
-echo "/bin/ls" | ./hsh
-./hsh FILENAME
+ ./hsh
+#cisfun$
 ```
 
 # Tasks
