@@ -6,7 +6,6 @@ hsh \- Holberton Simple Shell
 .SH SYNOPSIS
 .B echo "command" | ./hsh
 
-
 .SH DESCRIPTION
 
 hsh is a simple shell that works on linux systems, that executes commands from the standard input.
@@ -17,13 +16,17 @@ hsh is a simple shell that works on linux systems, that executes commands from t
 .RS
 \&$ ./hsh
 
-A prompt will then appear and the user can begin entering and executing\
-commands by pressing 'enter'.
+Will get into interactive mode, the prompt sould look
 
-Commands can also be entered and then piped into ./hsh.
 .br
 .\&
-\&$ echo "I have a purple penguin" | ./hsh
+.RS
+\&#cisfun$ 
+
+Can be use redirecting the standart output
+.br
+.\&
+\&$ echo "/bin/ls -l" | ./hsh
 
 .SH FEATURES
 .br
