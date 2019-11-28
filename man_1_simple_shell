@@ -14,12 +14,14 @@ hsh is a simple shell that works on linux systems, that executes commands from t
 .br
 - Interactive mode.
 .br
+.br
 \&$ ./hsh
 .br
 \&#cisfun$
 .br
 .br 
-Redirecting the standart output.
+
+- Redirecting the standart output.
 
 \&$ echo "/bin/ls -l" | ./hsh
 
