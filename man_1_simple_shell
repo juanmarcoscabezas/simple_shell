@@ -24,31 +24,37 @@ Or it can be use redirecting the standart output
 
 .SH FEATURES
 .br
-.B Display a prompt and wait for the user to type a command.
+- Display a prompt and wait for the user to type a command.
 .br
-.B The commands lines handle arguments
 .br
-.B If an executable cannot be found, print an error message and display the prompt again
+- The commands lines handle arguments
 .br
--B Handle the “end of file” condition (Ctrl+D) and the signal (Ctrl+C)
 .br
-.B Print the enviroment with 'env'
+- If an executable cannot be found, print an error message and display the prompt again
+.br
+.br
+- Handle the “end of file” condition (Ctrl+D) and the signal (Ctrl+C)
+.br
+.br
+- Print the enviroment with 'env'
 
 
-.SH BUILTINS
+.SH BUILT-IN
 Builtins functions.
 .br
 .br
-.B env
+.B
+env
 .br
 -Print the environment.
 .br
-.B exit
+.B
+exit
+.br
 -Exit with a status custom status.
 .br
--exits the program
-.br
-.B cd
+.B 
+cd
 .br
 - Can change the current directory to another one.
 
