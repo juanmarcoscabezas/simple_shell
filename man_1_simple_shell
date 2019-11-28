@@ -11,14 +11,15 @@ hsh \- Holberton Simple Shell
 hsh is a simple shell that works on linux systems, that executes commands from the standard input.
 
 .SH INVOCATION
-
+.br
+- Interactive mode.
+.br
 \&$ ./hsh
 .br
 \&#cisfun$
-
-Will get into interactive mode.
-
-Or it can be use redirecting the standart output
+.br
+.br 
+Redirecting the standart output.
 
 \&$ echo "/bin/ls -l" | ./hsh
 
