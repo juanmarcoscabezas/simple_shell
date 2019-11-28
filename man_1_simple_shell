@@ -23,20 +23,15 @@ Or it can be use redirecting the standart output
 
 .SH FEATURES
 .br
-.B Accepts piped input
+.B Display a prompt and wait for the user to type a command.
 .br
-.B Accepts file as an argument
+.B The commands lines handle arguments
 .br
-.B Variable substitution
+.B If an executable cannot be found, print an error message and display the prompt again
 .br
--$? $$ $# $0-9
+-B Handle the “end of file” condition (Ctrl+D) and the signal (Ctrl+C)
 .br
-.B Set local vars with FOO=bar
-.br
--Local variables not passed with environment
-.br
-.B escape characters with -&&, || and ; -tilde expansion to home \
-directory from env
+.B Print the enviroment with 'env'
 
 
 .SH BUILTINS
