@@ -32,7 +32,7 @@ This project was built by Hugo Bayona and Juan Marcos Cabezas
 - Handle the “end of file” condition (Ctrl+D) and the signal (Ctrl+C).
 - Print the enviroment with 'env'.
 - exit with a status
-- check cd
+- cd can check the current directory.
 
 # How Use
 
