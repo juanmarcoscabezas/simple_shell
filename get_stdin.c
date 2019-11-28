@@ -65,12 +65,12 @@ int verify_tab2(char *command, ssize_t command_len)
 void get_stdin(char *argv[], char *envp[], int *number_commands)
 {
 	char *command;
-	int pos = 0;
+	unsigned int pos = 0;
 	char ch = '\0';
 	int execute = 0;
-	int buffer_size = 64, buffer_inc = 1;
+	unsigned int buf_size = 64, buf_inc = 1;
 
-	command = malloc(sizeof(char) * buffer_size);
+	command = malloc(sizeof(char) * buf_size);
 	if (!command)
 		exit(0);
 	while (read(STDIN_FILENO, &ch, 1) > 0)
@@ -83,15 +83,16 @@ void get_stdin(char *argv[], char *envp[], int *number_commands)
 				execute = process_command(argv, envp, number_commands, command);
 			pos = -1;
 			free(command);
-			command = malloc(sizeof(char) * buffer_size);
-			_memset(command, '\0', buffer_size);
+			buf_inc = 1;
+			command = malloc(sizeof(char) * buf_size * buf_inc);
+			if (!command)
+				exit(0);
 		}
-		buffer_inc++;
-		if (pos == buffer_size - 2)
+		if (pos == (buf_size * buf_inc) - 2)
 		{
 			command[pos + 1] = '\0';
-			command = _realloc(command, buffer_size, buffer_size * (++buffer_inc));
-			buffer_inc++;
+			command = _realloc(command, buf_size * buf_inc, buf_size * (buf_inc + 1));
+			buf_inc++;
 		}
 		pos++;
 	}
