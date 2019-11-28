@@ -24,9 +24,12 @@ This project was built by Alejandro López and Juan Marcos Cabezas
 - Github: [@juanmarcoscabezas](https://github.com/juanmarcoscabezas)
 
 # Features
-- The main function uses structures to call the function corresponding to the case, this allows greater code scalability.
-- As in the original printf, the function has a buffer that stores and prints the output strings every 1024 bytes.
-- Just like the original printf, the returns of our function are the number of characters printed, when the input is incorrect the return is error -1
+- Display a prompt and wait for the user to type a command.
+- The prompt is displayed again each time a command has been executed.
+- The command lines are simple, no semicolons, no pipes, no redirections or any other advanced features.
+- The command lines are made only of one word. No arguments will be passed to programs.
+- If an executable cannot be found, print an error message and display the prompt again.
+- Handle the “end of file” condition (Ctrl+D) and the signal (Ctrl+C).
 
 
 # How Use
