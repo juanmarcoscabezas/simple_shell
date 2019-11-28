@@ -24,33 +24,46 @@ This project was built by Alejandro López and Juan Marcos Cabezas
 - Github: [@juanmarcoscabezas](https://github.com/juanmarcoscabezas)
 
 # Features
-- The main function uses structures to call the function corresponding to the case, this allows greater code scalability.
-- As in the original printf, the function has a buffer that stores and prints the output strings every 1024 bytes.
-- Just like the original printf, the returns of our function are the number of characters printed, when the input is incorrect the return is error -1
-
+- Display a prompt and wait for the user to type a command.
+- The prompt is displayed again each time a command has been executed.
+- The command lines are simple, no semicolons, no pipes, no redirections or any other advanced features.
+- The command lines are made only of one word.
+- The commands lines handle arguments.
+- If an executable cannot be found, print an error message and display the prompt again.
+- Handle the “end of file” condition (Ctrl+D) and the signal (Ctrl+C).
 
 # How Use
 
 ## How to compile
 
+gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+
 ### Requirements
 
  - compile on Ubuntu 14.04 LTS
  - compile with gcc 4.8.4
- 
-### Flags to compile
-
-`$ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh`
 
 ### Examples
 
 ```bash
-./hsh
-echo "/bin/ls" | ./hsh
-./hsh FILENAME
+$ ./hsh
+#cisfun$ echo "interactive mode"
+"interactive mode"
+#cisfun$
+#cisfun$ exit
+$
+```
+```bash
+$ echo "/bin/ls" | ./hsh
+AUTHORS         execute_commands.c  get_stdin.c         lib.c               _print.c     shell.h
+built_in.c      get_commands.c      hsh                 main.c              read_file.c  _string.c
+check_access.c  _getenv.c           interactive_mode.c  man_1_simple_shell  README.md
+$
 ```
 
 # Tasks
+
+
 
 # General Test Cases
 
