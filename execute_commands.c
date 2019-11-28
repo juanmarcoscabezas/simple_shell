@@ -63,7 +63,6 @@ int exec_cmds(char *argv[], char *tokens[], char *envp[], int *n_com, int *lo)
 	pid_t pid;
 	char *path = NULL, *com_cpy;
 
-	/* Check built-in functions */
 	built_in_result = built_in(argv, tokens, envp, n_com, lo);
 	if (built_in_result != 1)
 		return (built_in_result);
@@ -77,8 +76,7 @@ int exec_cmds(char *argv[], char *tokens[], char *envp[], int *n_com, int *lo)
 		com_cpy = tokens[0];
 		tokens[0] = check_access(path, tokens[0]);
 		if (tokens[0] == NULL)
-		{
-			print_parameters(argv[0], n_com, com_cpy, ": not found\n");
+		{print_parameters(argv[0], n_com, com_cpy, ": not found\n");
 			(*n_com)++;
 			if (path)
 				free(path);
@@ -90,13 +88,15 @@ int exec_cmds(char *argv[], char *tokens[], char *envp[], int *n_com, int *lo)
 	(*n_com)++;
 	pid = fork();
 	if (pid == 0)
-	{
-		execve(tokens[0], tokens, envp);
+	{execve(tokens[0], tokens, envp);
 		exit(0);
 	}
 	else
-		wait(&status);
+	{wait(&status);
+		if (WIFEXITED(status))
+			(*lo) = WEXITSTATUS(status);
+	}
 	if (is_accessible == -1)
 		free(tokens[0]);
-	return (0);
+	return (*lo);
 }
