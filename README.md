@@ -45,8 +45,16 @@ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ### Examples
 
 ```bash
- ./hsh
+$ ./hsh
+#cisfun$ echo "interactive mode"
+"interactive mode"
 #cisfun$
+#cisfun$ exit
+>
+```
+```bash
+$ echo "/bin/ls" | ./hsh
+
 ```
 
 # Tasks
