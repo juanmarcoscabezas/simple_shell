@@ -40,23 +40,23 @@ Or it can be use redirecting the standart output
 
 
 .SH BUILT-IN
-Builtins functions.
-.br
 .br
 .B
 env
 .br
--Print the environment.
+- - Print the environment.
+.br
 .br
 .B
 exit
 .br
--Exit with a status custom status.
+- - Exit with a status custom status.
+.br
 .br
 .B 
 cd
 .br
-- Can change the current directory to another one.
+- - Can change the current directory to another one.
 
 .SH BUGS
 No known bugs. For the current scope, but they are going to be added has they are found.
