@@ -31,4 +31,6 @@ void _puts(char *s);
 int _putchar(char c);
 void print_number(int *n);
 int verify_tab(char *command, ssize_t command_len);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+
 #endif

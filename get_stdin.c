@@ -33,6 +33,28 @@ int process_command(char *argv[], char *envp[], int *n_com, char *command)
 }
 
 /**
+ * verify_tab2 - Function to verify tabs
+ * @command: Command to verify
+ * @command_len: Length of the command to verify
+ * Return: 0 on success, -1 otherwise
+ */
+int verify_tab2(char *command, ssize_t command_len)
+{
+	ssize_t counter = 0;
+
+	while (counter < command_len)
+	{
+		if (command[counter] != '\t' && command[counter] != '\n')
+		{
+			if (command[counter] != ' ' && command[counter] != '\0')
+				return (0);
+		}
+		counter++;
+	}
+	return (-1);
+}
+
+/**
  * get_stdin - function to get stdin.
  * Description: main
  * @argv: arguments passed to the shell
@@ -46,8 +68,9 @@ void get_stdin(char *argv[], char *envp[], int *number_commands)
 	int pos = 0;
 	char ch = '\0';
 	int execute = 0;
+	int buffer_size = 64, buffer_inc = 1;
 
-	command = malloc(sizeof(char) * 1024);
+	command = malloc(sizeof(char) * buffer_size);
 	if (!command)
 		exit(0);
 	while (read(STDIN_FILENO, &ch, 1) > 0)
@@ -56,12 +79,19 @@ void get_stdin(char *argv[], char *envp[], int *number_commands)
 		if (ch == '\0' || ch == '\n')
 		{
 			command[pos + 1] = '\0';
-			if (verify_tab(command, _strlen(command)) == 0)
+			if (verify_tab2(command, _strlen(command)) == 0)
 				execute = process_command(argv, envp, number_commands, command);
 			pos = -1;
 			free(command);
-			command = malloc(sizeof(char) * 1024);
-			_memset(command, '\0', 1024);
+			command = malloc(sizeof(char) * buffer_size);
+			_memset(command, '\0', buffer_size);
+		}
+		buffer_inc++;
+		if (pos == buffer_size - 2)
+		{
+			command[pos + 1] = '\0';
+			command = _realloc(command, buffer_size, buffer_size * (++buffer_inc));
+			buffer_inc++;
 		}
 		pos++;
 	}
