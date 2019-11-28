@@ -43,6 +43,7 @@ void interactive_mode(char *argv[], char *envp[], int *n_com)
 	char *buffer;
 	size_t bufsize = 32;
 	ssize_t getline_len;
+	int last_out = 0;
 
 	signal(SIGINT, handle_sig);
 	while (1)
@@ -51,7 +52,7 @@ void interactive_mode(char *argv[], char *envp[], int *n_com)
 		if (!buffer)
 		{
 			perror("Error on allocation");
-			exit(100);
+			exit(0);
 		}
 
 		_puts("#cisfun$ ");
@@ -60,12 +61,12 @@ void interactive_mode(char *argv[], char *envp[], int *n_com)
 		{
 			free(buffer);
 			_putchar('\n');
-			exit(0);
+			exit(last_out);
 		}
 		if (getline_len > 1)
 		{
 			if (verify_tab(buffer, getline_len) == 0)
-				get_commands(argv, buffer, envp, n_com);
+				last_out = get_commands(argv, buffer, envp, n_com, &last_out);
 			else
 				(*n_com)++;
 		}

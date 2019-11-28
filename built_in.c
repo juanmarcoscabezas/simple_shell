@@ -114,9 +114,10 @@ int check_cd(char *argv[], char *tokens[], char *envp[], int *n_com)
  * @tokens: optiones tokenized from a command
  * @envp: enviroment variables passed to the shell
  * @n_com: the number of commands given until this point.
+ * @lo: last output
  * Return: the flag passed to exit, -1 otherwise
  */
-int built_in(char *argv[], char *tokens[], char *envp[], int *n_com)
+int built_in(char *argv[], char *tokens[], char *envp[], int *n_com, int *lo)
 {
 	if (tokens != NULL)
 	{
@@ -131,6 +132,8 @@ int built_in(char *argv[], char *tokens[], char *envp[], int *n_com)
 					(*n_com)++;
 					return (127);
 				}
+				if (lo)
+					exit(*lo);
 				exit(0);
 			}
 			if (_strcmp(tokens[0], "env") == 0)

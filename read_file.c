@@ -24,7 +24,7 @@ int process_command2(char *argv[], char *envp[], int *n_com, char *command)
 		token = strtok(NULL, " \t\r\n\a");
 	}
 	tokens[pos] = NULL;
-	execute = execute_commands(argv, tokens, envp, n_com);
+	execute = exec_cmds(argv, tokens, envp, n_com, NULL);
 	free(tokens);
 	return (execute);
 }

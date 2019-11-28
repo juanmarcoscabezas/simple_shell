@@ -48,22 +48,23 @@ int check_directory(char *filename, int *n_com, char *token)
 }
 
 /**
- * execute_commands -  Execute commands
+ * exec_cmds -  Execute commands
  * Description: Function that execute commands
  * @argv: arguments passed to the shell
  * @tokens: Options tokenized from a command
  * @envp: enviroment variables passed to the shell
  * @n_com: the number of commands given until this point.
+ * @lo: last output from a command
  * Return: 1
  */
-int execute_commands(char *argv[], char *tokens[], char *envp[], int *n_com)
+int exec_cmds(char *argv[], char *tokens[], char *envp[], int *n_com, int *lo)
 {
 	int status, is_accessible, built_in_result;
 	pid_t pid;
 	char *path = NULL, *com_cpy;
 
 	/* Check built-in functions */
-	built_in_result = built_in(argv, tokens, envp, n_com);
+	built_in_result = built_in(argv, tokens, envp, n_com, lo);
 	if (built_in_result != 1)
 		return (built_in_result);
 	/* Check if the file exists */

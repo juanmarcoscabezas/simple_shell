@@ -12,11 +12,6 @@ int main(int argc, char *argv[], char *envp[])
 {
 	int number_commands = 1;
 
-	if (!envp)
-	{
-		printf("ES NULO");
-		return (0);
-	}
 	if (argc == 1)
 	{
 		if (isatty(STDIN_FILENO))
