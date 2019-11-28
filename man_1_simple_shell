@@ -35,38 +35,21 @@ Or it can be use redirecting the standart output
 
 
 .SH BUILTINS
-The following builtins are supported by hsh
+Builtins functions.
 .br
 .br
 .B env
 .br
--prints environment.Falls through to std env if more than 1 arg -quotes around\
- arguments (accepting more stdin on mismatch in progress)
+-Print the environment.
 .br
 .B exit
--with status
+-Exit with a status custom status.
 .br
 -exits the program
 .br
 .B cd
 .br
-- change directories
-.br
-.B setenv
-.br
-- sets environment variable
-.br
-.B unsetenv
-.br
-- unsets environment variable
-.br
-.B alias
-.br
-- creates alias variable
-.br
-.B unalias
-.br
-- removes alias variable
+- Can change the current directory to another one.
 
 .SH BUGS
 No known bugs, but hey we aren't perfect. Please report any bugs to the twitter\
